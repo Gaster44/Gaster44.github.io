@@ -16,15 +16,15 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于变量一.折叠代码  主要作用是让我们在编程时，逻辑更加清晰。 eg：输入#region会自动补全。他是#region#endregion配对出现的 12345678910111213141516namespace 语法知识&amp;#123;    internal class Program    &amp;#123;        static void Main(string[] args)">
+    <meta name="description" content="关于变量一.折叠代码  主要作用是让我们在编程时，逻辑更加清晰。 eg：输入#region会自动补全。他是#region#endregion配对出现的 1234567891011121314151617181920namespace 语法知识&amp;#123;    internal class Program    &amp;#123;        static void Main(string[] arg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="变量">
 <meta property="og:url" content="http://example.com/2023/10/15/%E5%8F%98%E9%87%8F/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="关于变量一.折叠代码  主要作用是让我们在编程时，逻辑更加清晰。 eg：输入#region会自动补全。他是#region#endregion配对出现的 12345678910111213141516namespace 语法知识&amp;#123;    internal class Program    &amp;#123;        static void Main(string[] args)">
+<meta property="og:description" content="关于变量一.折叠代码  主要作用是让我们在编程时，逻辑更加清晰。 eg：输入#region会自动补全。他是#region#endregion配对出现的 1234567891011121314151617181920namespace 语法知识&amp;#123;    internal class Program    &amp;#123;        static void Main(string[] arg">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-15T08:43:19.000Z">
-<meta property="article:modified_time" content="2023-10-15T10:51:05.651Z">
+<meta property="article:modified_time" content="2023-10-15T12:04:30.501Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          773 字
+          1.4k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          7 分钟
+          13 分钟
         
       </span>
     
@@ -274,22 +274,42 @@
                 
                 <h1 id="关于变量"><a href="#关于变量" class="headerlink" title="关于变量"></a>关于变量</h1><h2 id="一-折叠代码"><a href="#一-折叠代码" class="headerlink" title="一.折叠代码"></a>一.折叠代码</h2><p>  主要作用是让我们在编程时，逻辑更加清晰。</p>
 <p>eg：输入#region会自动补全。他是#region#endregion配对出现的</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 折叠</span><br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>			<span class="hljs-comment">//在vs编译器中会自动折叠。</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 折叠</span><br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;Hello, World!&quot;</span>);<br>            <span class="hljs-comment">//在vs编译器中会自动折叠。</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>            <span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>;<br>            Consloe.WriteLine(<span class="hljs-string">&quot;变量i=&quot;</span>+i);<br>            <span class="hljs-comment">//字符串与变量之间通过+进行拼接打印。</span><br>            <span class="hljs-comment">//打印变量。</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>而折叠代码的具体作用 是可以将中间包裹的代码折叠起来，避免代码太过于凌乱。</p>
 <p>本质是编辑器提供给我们的预处理指令。</p>
 <p>它只会在编辑时有用，发布了代码或者执行代码，它会被自动删除。</p>
-<h2 id="二-如何声明变量"><a href="#二-如何声明变量" class="headerlink" title="二.如何声明变量"></a>二.如何声明变量</h2><h3 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h3><p>  可以变化的容器。变量就是用来存储各种不同类型数值的一个容器。不同的变量类型可以存储不同类型的值。</p>
+<h2 id="二-如何申明变量"><a href="#二-如何申明变量" class="headerlink" title="二.如何申明变量"></a>二.如何申明变量</h2><h3 id="变量："><a href="#变量：" class="headerlink" title="变量："></a>变量：</h3><p>  可以变化的容器。变量就是用来存储各种不同类型数值的一个容器。不同的变量类型可以存储不同类型的值。（<em>使用一定要事先声明。）</em></p>
 <h3 id="变量声明固定写法："><a href="#变量声明固定写法：" class="headerlink" title="变量声明固定写法："></a>变量声明固定写法：</h3><p> 变量类型+变量名&#x3D;初始值；eg：int i &#x3D;1；（尽量不要用中文取名）</p>
 <p>变量类型有14种变化；变量名可以自定义，但是要按照一定的规则；初始值一定要和变量类型统一。</p>
-<h4 id="关于变量类型"><a href="#关于变量类型" class="headerlink" title="关于变量类型"></a>关于变量类型</h4><p>1.有符号的整形变量：是能存储一定范围的正负数包括0的类型</p>
-<p>sbyte：-128-127</p>
+<h4 id="关于变量类型"><a href="#关于变量类型" class="headerlink" title="关于变量类型"></a>关于变量类型</h4><h5 id="1-有符号的整形变量：是能存储一定范围的正负数包括0的类型"><a href="#1-有符号的整形变量：是能存储一定范围的正负数包括0的类型" class="headerlink" title="1.有符号的整形变量：是能存储一定范围的正负数包括0的类型"></a>1.有符号的整形变量：是能存储一定范围的正负数包括0的类型</h5><p>sbyte：-128-127</p>
 <p>int：-21亿-21亿多</p>
 <p>short：-32768-32767之间的数字</p>
 <p>long：-九百万兆-九百万兆之间的数字</p>
-<p>2.无符号的整形变量</p>
-<p>3.浮点数（小数）</p>
-<p>4.特殊类型</p>
+<h5 id="2-无符号的整形变量：能存储一定范围的0和正数的变量类型。"><a href="#2-无符号的整形变量：能存储一定范围的0和正数的变量类型。" class="headerlink" title="2.无符号的整形变量：能存储一定范围的0和正数的变量类型。"></a>2.无符号的整形变量：能存储一定范围的0和正数的变量类型。</h5><p>byte:0-255;</p>
+<p>uint :0-42亿多的范围；</p>
+<p>ushort:0-65535之间的一个数字；</p>
+<p>ulong：0-18百万兆之间的数字；</p>
+<h5 id="3-浮点数（小数）"><a href="#3-浮点数（小数）" class="headerlink" title="3.浮点数（小数）"></a>3.浮点数（小数）</h5><p>float:存储7&#x2F;8位有效数字，根据编译器不同而定。</p>
+<p><u><em>float数字声明后面一定要加f；</em></u></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">float</span> f =<span class="hljs-number">0.12324f</span>;<br>Console.WriteLine(f);<br><span class="hljs-comment">//打印出变量，并且有效数字从非零数来计算，并且四舍五入</span><br></code></pre></td></tr></table></figure>
+
+<p>double 存储15-17位有效数字。</p>
+<p><em><u>PS：在Csharp中声明小数默认double类型，因此如果要声明float类型需要在数字末尾加f；</u></em></p>
+<p>decimal 存储27-28位有效数字，不建议使用，太大了</p>
+<p><u><em>数字末尾要加m；</em></u></p>
+<h5 id="4-特殊类型"><a href="#4-特殊类型" class="headerlink" title="4.特殊类型"></a>4.特殊类型</h5><p>bool：表示真假数据类型，只有两种类型：true or false；</p>
+<p>char：用来存储单个字符的变量类型</p>
+<p><em><u>要加单引号。</u></em></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">char</span> c=<span class="hljs-string">&#x27;A&#x27;</span>;<br><span class="hljs-comment">//只能是一个字符，中文也可以。</span><br></code></pre></td></tr></table></figure>
+
+<p>string：字符串类型，用来存储多个字符，没有上限。</p>
+<p><em><u>要加双引号。</u></em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ;">string str=&quot;haihaiahi&quot;<br></code></pre></td></tr></table></figure>
+
+<h2 id="三-为什么有那么多不同类型的变量"><a href="#三-为什么有那么多不同类型的变量" class="headerlink" title="三.为什么有那么多不同类型的变量"></a>三.为什么有那么多不同类型的变量</h2><p>不同的变量，存储的范围和类型不一样，本质是占用的内存空间不同。</p>
+<p>选择不同的数据（变量）类型装在不同的数据之中。</p>
+<p>初学者建议：数字用int，小数用float，字符串用string，真假用bool。</p>
 
                 
               </div>
