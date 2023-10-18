@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>变量的本质</title>
+    <link href="/2023/10/18/%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"/>
+    <url>/2023/10/18/%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="变量的本质"><a href="#变量的本质" class="headerlink" title="变量的本质"></a>变量的本质</h1><h2 id="一-变量的存储空间"><a href="#一-变量的存储空间" class="headerlink" title="一.变量的存储空间"></a>一.变量的存储空间</h2><p><strong>1byte(比特)&#x3D;8字节</strong></p><p><strong>1KB&#x3D;1024byte</strong></p><p><strong>1MB&#x3D;1024KB</strong></p><p><strong>1GB&#x3D;1024MB</strong></p><p><strong>1TB&#x3D;1024GB</strong></p><p>通过sizeof的方法，可以获取变量类型所占的内存空间（单位：字节）</p><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> sbyteSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">sbyte</span>);<br>Console.WriteLine(<span class="hljs-string">&quot;sbyte 所占的字节数为:&quot;</span>+sbyteSzie);<br><span class="hljs-comment">//打印出1。</span><br></code></pre></td></tr></table></figure><p><em><strong>(PS:字符串类型string无法测试出所占内存空间大小，即输入sizeof会报错，因为字符串类型可以储存一系列的字符串，长度是可以变化的。)</strong></em></p><h2 id="二-变量的本质"><a href="#二-变量的本质" class="headerlink" title="二.变量的本质"></a>二.变量的本质</h2><p>变量的本质是2进制→计算机中所有数据的本质是二进制，是一堆1和0；</p><p><strong>为什么是二进制？</strong></p><p>数据传递只能通过电信号，只有开和关两种状态，因此只能用0和1来表示这两种状态。</p><p>计算机中存储单位最小的为bit（位），它只能表示0和1两个数字。</p><p>1bit就是1个数字，要不是1要不是0。</p><p>为了方便数据表示：出现一个叫byte（字节）的单位，它是由8个bit组成的存储单位</p><p>所以我们一般说一个字节为8位。</p><p><strong>1byte&#x3D;0000 0000</strong> </p><p><u><em>二进制转十进制</em></u></p><p><u><em>十进制转二进制</em></u></p><p><u><em>自己会了就行，不作整理</em></u></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Csharp基础架构</title>
     <link href="/2023/10/15/Csharp%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
     <url>/2023/10/15/Csharp%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/</url>
