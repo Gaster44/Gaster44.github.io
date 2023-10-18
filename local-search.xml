@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>Mysql 基础</title>
+    <link href="/2023/10/18/Mysql-%E5%9F%BA%E7%A1%80/"/>
+    <url>/2023/10/18/Mysql-%E5%9F%BA%E7%A1%80/</url>
+    
+    <content type="html"><![CDATA[<h1 id="一：基础语法"><a href="#一：基础语法" class="headerlink" title="一：基础语法"></a>一：基础语法</h1><h2 id="1-SQL-语句后面的分号？"><a href="#1-SQL-语句后面的分号？" class="headerlink" title="1.SQL 语句后面的分号？"></a>1.SQL 语句后面的分号？</h2><p>某些数据库系统要求在每条 SQL 命令的末端使用分号。在我们的教程中不使用分号。</p><p>分号是在数据库系统中分隔每条 SQL 语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句。</p><p>如果您使用的是 MS Access 和 SQL Server 2000，则不必在每条 SQL 语句之后使用分号，不过某些数据库软件要求必须使用分号。（所以建议还是加上吧。）</p><h2 id="2-SQL-DML-和DDL"><a href="#2-SQL-DML-和DDL" class="headerlink" title="2.SQL DML 和DDL"></a>2.SQL DML 和DDL</h2><p>可以把 SQL 分为两个部分：数据操作语言 (DML) 和 数据定义语言 (DDL)。</p><p>SQL (结构化查询语言)是用于执行查询的语法。但是 SQL 语言也包含用于更新、插入和删除记录的语法。</p><h3 id="关于DML"><a href="#关于DML" class="headerlink" title="关于DML"></a>关于DML</h3><p><strong>查询和更新指令构成了 SQL 的 DML 部分：</strong></p><ul><li><strong><em>SELECT</em> - 从数据库表中获取数据</strong></li><li><strong><em>UPDATE</em> - 更新数据库表中的数据</strong></li><li><strong><em>DELETE</em> - 从数据库表中删除数据</strong></li><li><strong><em>INSERT INTO</em> - 向数据库表中插入数据</strong></li></ul><h3 id="关于DDL"><a href="#关于DDL" class="headerlink" title="关于DDL"></a>关于DDL</h3><p><strong>SQL 的数据定义语言 (DDL) 部分使我们有能力创建或删除表格。我们也可以定义索引（键），规定表之间的链接，以及施加表间的约束。</strong></p><p><strong>SQL 中最重要的 DDL 语句:</strong></p><ul><li><p><strong><em>CREATE DATABASE</em> - 创建新数据库</strong></p></li><li><p><strong><em>ALTER DATABASE</em> - 修改数据库</strong></p></li><li><p><strong><em>CREATE TABLE</em> - 创建新表</strong></p></li><li><p><strong><em>ALTER TABLE</em> - 变更（改变）数据库表</strong></p></li><li><p><strong><em>DROP TABLE</em> - 删除表</strong></p></li><li><p><strong><em>CREATE INDEX</em> - 创建索引（搜索键）</strong></p></li><li><p><strong><em>DROP INDEX</em> - 删除索引</strong></p></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>变量的本质</title>
     <link href="/2023/10/18/%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"/>
     <url>/2023/10/18/%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/</url>
