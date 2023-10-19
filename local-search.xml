@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>转义字符</title>
+    <link href="/2023/10/19/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"/>
+    <url>/2023/10/19/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/</url>
+    
+    <content type="html"><![CDATA[<h1 id="关于转义字符"><a href="#关于转义字符" class="headerlink" title="关于转义字符"></a>关于转义字符</h1><h2 id="一-转义字符的使用"><a href="#一-转义字符的使用" class="headerlink" title="一.转义字符的使用"></a>一.转义字符的使用</h2><p>什么是转义字符？</p><p>它是字符串的一部分，用来表示一些特殊含义的字符</p><p>比如：在字符串中单引号，引号，空行等等。</p><p><strong>固定写法</strong></p><p><strong>\字符</strong></p><p>不同的\和字符的组合表示不同的含义。</p><p><strong>常用转义字符</strong></p><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str =<span class="hljs-string">&quot;\&#x27;哈哈哈\&#x27;&quot;</span>;<br>    <span class="hljs-comment">//打印出来是&#x27;哈哈哈&#x27;</span><br><span class="hljs-comment">//单引号\&#x27; 双引号\&quot; 换行\n 斜杠\\ 制表符（空一个Tab键位）\t 光标退格\b(后退一步)</span><br><span class="hljs-comment">//空字符\0 警报音\a</span><br></code></pre></td></tr></table></figure><h2 id="二-取消转义字符"><a href="#二-取消转义字符" class="headerlink" title="二 取消转义字符"></a>二 取消转义字符</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str=<span class="hljs-string">@&quot;哈哈/哈哈&quot;</span>;<br>Console.WriteLine(str);<br><span class="hljs-comment">//输出结果同样是哈哈/哈哈。</span><br><span class="hljs-comment">//@的作用是取消了转义字符在字符串里面的作用，让它变成了一个单纯的字符</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Csharp</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>常量</title>
+    <link href="/2023/10/19/%E5%B8%B8%E9%87%8F/"/>
+    <url>/2023/10/19/%E5%B8%B8%E9%87%8F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="关于常量"><a href="#关于常量" class="headerlink" title="关于常量"></a>关于常量</h1><h2 id="一-常量的申明"><a href="#一-常量的申明" class="headerlink" title="一.常量的申明"></a>一.常量的申明</h2><p>关键字 const</p><p>固定写法：const 变量类型 变量名 &#x3D;初始值；</p><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure><h2 id="二-常量的特点"><a href="#二-常量的特点" class="headerlink" title="二.常量的特点"></a>二.常量的特点</h2><p>1.必须初始化 </p><p>2.不能被修改</p><p>作用 申明一些常用不变的变量。</p><p><em>（ps：之后讲解了静态关键字static之后会回过头来讲解常量的特点）</em></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Csharp</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Mysql 基础教程</title>
     <link href="/2023/10/18/Mysql-%E5%9F%BA%E7%A1%80/"/>
     <url>/2023/10/18/Mysql-%E5%9F%BA%E7%A1%80/</url>

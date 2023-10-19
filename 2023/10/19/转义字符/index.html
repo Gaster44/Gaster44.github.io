@@ -16,21 +16,21 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于基础语法1.SQL 语句后面的分号？某些数据库系统要求在每条 SQL 命令的末端使用分号。在我们的教程中不使用分号。 分号是在数据库系统中分隔每条 SQL 语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句。 如果您使用的是 MS Access 和 SQL Server 2000，则不必在每条 SQL 语句之后使用分号，不过某些数据库软件要求必须使用分号。（所以建议还是加上吧。">
+    <meta name="description" content="关于转义字符一.转义字符的使用什么是转义字符？ 它是字符串的一部分，用来表示一些特殊含义的字符 比如：在字符串中单引号，引号，空行等等。 固定写法 \字符 不同的\和字符的组合表示不同的含义。 常用转义字符 1234string str &#x3D;&quot;\&amp;#x27;哈哈哈\&amp;#x27;&quot;;    &#x2F;&#x2F;打印出来是&amp;#x27;哈哈哈&amp;#x27;	&#x2F;&#x2F;单引号\&amp;#x27; 双引号\&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mysql 基础教程">
-<meta property="og:url" content="https://gaster44.github.io/2023/10/18/Mysql-%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="转义字符">
+<meta property="og:url" content="https://gaster44.github.io/2023/10/19/%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="关于基础语法1.SQL 语句后面的分号？某些数据库系统要求在每条 SQL 命令的末端使用分号。在我们的教程中不使用分号。 分号是在数据库系统中分隔每条 SQL 语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句。 如果您使用的是 MS Access 和 SQL Server 2000，则不必在每条 SQL 语句之后使用分号，不过某些数据库软件要求必须使用分号。（所以建议还是加上吧。">
+<meta property="og:description" content="关于转义字符一.转义字符的使用什么是转义字符？ 它是字符串的一部分，用来表示一些特殊含义的字符 比如：在字符串中单引号，引号，空行等等。 固定写法 \字符 不同的\和字符的组合表示不同的含义。 常用转义字符 1234string str &#x3D;&quot;\&amp;#x27;哈哈哈\&amp;#x27;&quot;;    &#x2F;&#x2F;打印出来是&amp;#x27;哈哈哈&amp;#x27;	&#x2F;&#x2F;单引号\&amp;#x27; 双引号\&quot;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-18T15:19:41.000Z">
-<meta property="article:modified_time" content="2023-10-19T04:55:03.689Z">
+<meta property="article:published_time" content="2023-10-19T14:33:03.000Z">
+<meta property="article:modified_time" content="2023-10-19T14:55:39.450Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Mysql 基础教程 - Gaster44&#39;s blog</title>
+  <title>转义字符 - Gaster44&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Mysql 基础教程"></span>
+            <span id="subtitle" data-typed-text="转义字符"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-18 23:19" pubdate>
-          2023年10月18日 晚上
+        <time datetime="2023-10-19 22:33" pubdate>
+          2023年10月19日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          638 字
+          346 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          6 分钟
+          3 分钟
         
       </span>
     
@@ -267,41 +267,22 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Mysql 基础教程</h1>
+            <h1 id="seo-header">转义字符</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="关于基础语法"><a href="#关于基础语法" class="headerlink" title="关于基础语法"></a>关于基础语法</h1><h2 id="1-SQL-语句后面的分号？"><a href="#1-SQL-语句后面的分号？" class="headerlink" title="1.SQL 语句后面的分号？"></a>1.SQL 语句后面的分号？</h2><p>某些数据库系统要求在每条 SQL 命令的末端使用分号。在我们的教程中不使用分号。</p>
-<p>分号是在数据库系统中分隔每条 SQL 语句的标准方法，这样就可以在对服务器的相同请求中执行一条以上的语句。</p>
-<p>如果您使用的是 MS Access 和 SQL Server 2000，则不必在每条 SQL 语句之后使用分号，不过某些数据库软件要求必须使用分号。（所以建议还是加上吧。）</p>
-<h2 id="2-SQL-DML-和DDL"><a href="#2-SQL-DML-和DDL" class="headerlink" title="2.SQL DML 和DDL"></a>2.SQL DML 和DDL</h2><p>可以把 SQL 分为两个部分：数据操作语言 (DML)<em>（Data Manipulation Language）</em> 和 数据定义语言 (DDL)<em>（Data Definition Language）</em>。</p>
-<p>SQL (结构化查询语言)是用于执行查询的语法。但是 SQL 语言也包含用于更新、插入和删除记录的语法。</p>
-<h3 id="关于DML"><a href="#关于DML" class="headerlink" title="关于DML"></a>关于DML</h3><p><strong>查询和更新指令构成了 SQL 的 DML 部分：</strong></p>
-<ul>
-<li><strong><em>SELECT</em> - 从数据库表中获取数据</strong></li>
-<li><strong><em>UPDATE</em> - 更新数据库表中的数据</strong></li>
-<li><strong><em>DELETE</em> - 从数据库表中删除数据</strong></li>
-<li><strong><em>INSERT INTO</em> - 向数据库表中插入数据</strong></li>
-</ul>
-<h3 id="关于DDL"><a href="#关于DDL" class="headerlink" title="关于DDL"></a>关于DDL</h3><p><strong>SQL 的数据定义语言 (DDL) 部分使我们有能力创建或删除表格。我们也可以定义索引（键），规定表之间的链接，以及施加表间的约束。</strong></p>
-<p><strong>SQL 中最重要的 DDL 语句:</strong></p>
-<ul>
-<li><p><strong><em>CREATE DATABASE</em> - 创建新数据库</strong></p>
-</li>
-<li><p><strong><em>ALTER DATABASE</em> - 修改数据库</strong></p>
-</li>
-<li><p><strong><em>CREATE TABLE</em> - 创建新表</strong></p>
-</li>
-<li><p><strong><em>ALTER TABLE</em> - 变更（改变）数据库表</strong></p>
-</li>
-<li><p><strong><em>DROP TABLE</em> - 删除表</strong></p>
-</li>
-<li><p><strong><em>CREATE INDEX</em> - 创建索引（搜索键）</strong></p>
-</li>
-<li><p><strong><em>DROP INDEX</em> - 删除索引</strong></p>
-</li>
-</ul>
+                <h1 id="关于转义字符"><a href="#关于转义字符" class="headerlink" title="关于转义字符"></a>关于转义字符</h1><h2 id="一-转义字符的使用"><a href="#一-转义字符的使用" class="headerlink" title="一.转义字符的使用"></a>一.转义字符的使用</h2><p>什么是转义字符？</p>
+<p>它是字符串的一部分，用来表示一些特殊含义的字符</p>
+<p>比如：在字符串中单引号，引号，空行等等。</p>
+<p><strong>固定写法</strong></p>
+<p><strong>\字符</strong></p>
+<p>不同的\和字符的组合表示不同的含义。</p>
+<p><strong>常用转义字符</strong></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str =<span class="hljs-string">&quot;\&#x27;哈哈哈\&#x27;&quot;</span>;<br>    <span class="hljs-comment">//打印出来是&#x27;哈哈哈&#x27;</span><br>	<span class="hljs-comment">//单引号\&#x27; 双引号\&quot; 换行\n 斜杠\\ 制表符（空一个Tab键位）\t 光标退格\b(后退一步)</span><br>	<span class="hljs-comment">//空字符\0 警报音\a</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="二-取消转义字符"><a href="#二-取消转义字符" class="headerlink" title="二 取消转义字符"></a>二 取消转义字符</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str=<span class="hljs-string">@&quot;哈哈/哈哈&quot;</span>;<br>Console.WriteLine(str);<br><span class="hljs-comment">//输出结果同样是哈哈/哈哈。</span><br><span class="hljs-comment">//@的作用是取消了转义字符在字符串里面的作用，让它变成了一个单纯的字符</span><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -320,7 +301,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Mysql/" class="category-chain-item">Mysql</a>
+  <a href="/categories/Csharp/" class="category-chain-item">Csharp</a>
   
   
 
@@ -340,8 +321,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Mysql 基础教程</div>
-      <div>https://gaster44.github.io/2023/10/18/Mysql-基础/</div>
+      <div>转义字符</div>
+      <div>https://gaster44.github.io/2023/10/19/转义字符/</div>
     </div>
     <div class="license-meta">
       
@@ -353,7 +334,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月18日</div>
+          <div>2023年10月19日</div>
         </div>
       
       
@@ -385,18 +366,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/19/%E5%B8%B8%E9%87%8F/" title="常量">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常量</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/18/%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/" title="变量的本质">
-                        <span class="hidden-mobile">变量的本质</span>
+                      <a href="/2023/10/19/%E5%B8%B8%E9%87%8F/" title="常量">
+                        <span class="hidden-mobile">常量</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
