@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>类型转换</title>
+    <link href="/2023/10/21/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
+    <url>/2023/10/21/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="关于类型转换"><a href="#关于类型转换" class="headerlink" title="关于类型转换"></a>关于类型转换</h1><h2 id="一-隐式转换"><a href="#一-隐式转换" class="headerlink" title="一.隐式转换"></a>一.隐式转换</h2><p>什么是类型转换？<br>就是不同变量类型之间的相互转换</p><p><strong>隐式转换的基本规则→不同类型之间自动切换</strong></p><h4 id="（大范围装小范围）（核心）"><a href="#（大范围装小范围）（核心）" class="headerlink" title="（大范围装小范围）（核心）"></a><strong>（大范围装小范围）（核心）</strong></h4><h3 id="1-相同大类型之间的转换"><a href="#1-相同大类型之间的转换" class="headerlink" title="1.相同大类型之间的转换"></a>1.相同大类型之间的转换</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">long</span> l=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">short</span> s=<span class="hljs-number">1</span>;<br>l=i;<br><span class="hljs-comment">//隐士转换，int隐式转换成long</span><br>i=l;<br><span class="hljs-comment">//会报错，不能用小范围的类型去装在大范围的类型。</span><br></code></pre></td></tr></table></figure><h3 id="2-不同大类型之间的转换"><a href="#2-不同大类型之间的转换" class="headerlink" title="2.不同大类型之间的转换"></a>2.不同大类型之间的转换</h3><h4 id="无符号和有符号之间"><a href="#无符号和有符号之间" class="headerlink" title="无符号和有符号之间"></a>无符号和有符号之间</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">byte</span> b2=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">sbyte</span> b1=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> b3=<span class="hljs-number">1</span>;<br>b2=b1;<br><span class="hljs-comment">//无符号不能装有符号，有符号的变量是不能够隐式转换成无符号的。</span><br>b3=b2;<br><span class="hljs-comment">//有符号装无符号，前提：有符号的变量不管是多少，都能包裹无符号变量。</span><br></code></pre></td></tr></table></figure><h4 id="浮点数装整数"><a href="#浮点数装整数" class="headerlink" title="浮点数装整数"></a>浮点数装整数</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">float</span> f2=<span class="hljs-number">1.1f</span>;<br><span class="hljs-built_in">long</span> i1=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">ulong</span> i2=<span class="hljs-number">1</span>;<br>f2=i1;<br>f2=i2;<br><span class="hljs-comment">//浮点数是可以装载任何类型的整数。</span><br></code></pre></td></tr></table></figure><p>特殊情况</p><p>char类型可以隐式转换成整型和浮点型、</p><p>char类型隐式转换成数值类型，其对应的数字其实是一个ASCII码。</p><p>string类型无法和其他类型进行隐式转换</p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>有符号：long→int→short→sbyte</p><p>无符号：ulong→uint→ushort→byte</p><p>浮点数：double→float</p><p><em>decimal这个类型<strong>没有办法</strong>用隐式转换的形式去存储double和float</em></p><p>double→float→整数（无符号，有符号）→char</p><p>decimal→整数（无符号，有符号）→char</p><p>string和bool不参与隐式转换</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Csharp</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SQL语法相关</title>
     <link href="/2023/10/19/SQL%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/"/>
     <url>/2023/10/19/SQL%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/</url>
