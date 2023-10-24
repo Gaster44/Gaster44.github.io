@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>mysql day04</title>
+    <link href="/2023/10/24/mysql-day04/"/>
+    <url>/2023/10/24/mysql-day04/</url>
+    
+    <content type="html"><![CDATA[<h1 id="列起别名"><a href="#列起别名" class="headerlink" title="列起别名"></a>列起别名</h1><h3 id="给查询的列起别名？"><a href="#给查询的列起别名？" class="headerlink" title="给查询的列起别名？"></a>给查询的列起别名？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）<br>+--------+------------+<br>| deptno | deptname   |<br>+--------+------------+<br>|     10 | ACCOUNTING |<br>|     20 | RESEARCH   |<br>|     30 | SALES      |<br>|     40 | OPERATIONS |<br>+--------+------------+<br>4 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure><p>使用as关键字起别名，as为alias(别名)的缩写。<em>as可以用空格代替。</em></p><p><em>注意：只是将显示的查询结果列名显示为deptname，原表列名不变</em></p><p><em>记住：select语句永远都不会进行修改操作，因为它的功能只负责查询。</em></p><h3 id="假设起别名的时候，别名里面有空格怎么办？"><a href="#假设起别名的时候，别名里面有空格怎么办？" class="headerlink" title="假设起别名的时候，别名里面有空格怎么办？"></a>假设起别名的时候，别名里面有空格怎么办？</h3><p><strong>mysql &gt;select deptno,dname  dept name from dept;</strong></p><p>DBMS看到这样的语句，进行SQL语句的编译的时候，不符合语法，编译错误。</p><p>怎么解决？</p><p><strong>加引号</strong></p><p> <strong>mysql &gt;select deptno,dname  “dept name” from dept;</strong></p><p><em>注意：在所有的数据库中，字符串统一使用单引号括起来，单引号是标准，双引号在oracle数据库中用不了，但是在mysql中可以使用。</em></p><p><em>Ps：使用中文命名时要使用单引号括起来。</em></p><h1 id="列参与数学运算"><a href="#列参与数学运算" class="headerlink" title="列参与数学运算"></a>列参与数学运算</h1><h3 id="计算员工年薪？"><a href="#计算员工年薪？" class="headerlink" title="计算员工年薪？"></a>计算员工年薪？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt; select ename,sal from emp;<br>+--------+---------+<br>| ename  | sal     |<br>+--------+---------+<br>| SMITH  |  800.00 |<br>| ALLEN  | 1600.00 |<br>| WARD   | 1250.00 |<br>| JONES  | 2975.00 |<br>| MARTIN | 1250.00 |<br>| BLAKE  | 2850.00 |<br>| CLARK  | 2450.00 |<br>| SCOTT  | 3000.00 |<br>| KING   | 5000.00 |<br>| TURNER | 1500.00 |<br>| ADAMS  | 1100.00 |<br>| JAMES  |  950.00 |<br>| FORD   | 3000.00 |<br>| MILLER | 1300.00 |<br>+--------+---------+<br>14 rows in set (0.001 sec)<br>//先查看员工薪资。<br> mysql &gt;select ename,sal*12 from emp;<br>+--------+----------+<br>| ename  | sal*12   |<br>+--------+----------+<br>| SMITH  |  9600.00 |<br>| ALLEN  | 19200.00 |<br>| WARD   | 15000.00 |<br>| JONES  | 35700.00 |<br>| MARTIN | 15000.00 |<br>| BLAKE  | 34200.00 |<br>| CLARK  | 29400.00 |<br>| SCOTT  | 36000.00 |<br>| KING   | 60000.00 |<br>| TURNER | 18000.00 |<br>| ADAMS  | 13200.00 |<br>| JAMES  | 11400.00 |<br>| FORD   | 36000.00 |<br>| MILLER | 15600.00 |<br>+--------+----------+<br>14 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure><p><strong>结论：字段可以使用数字表达式</strong></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Mysql</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>mysql day03</title>
     <link href="/2023/10/22/mysql-day03/"/>
     <url>/2023/10/22/mysql-day03/</url>

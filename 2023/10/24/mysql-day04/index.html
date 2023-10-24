@@ -16,21 +16,21 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据导入演示1.怎么将sql文件中的数据导入呢？1234567891011mysql &gt; source+文件路径；mysql &gt; show tables;+-----------------+| Tables_in_hello |+-----------------+| dept            || emp             || salgrade        |+--">
+    <meta name="description" content="列起别名给查询的列起别名？12345678910mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）+--------+------------+| deptno | deptname   |+--------+------------+|     10 | ACCOUNTING ||     20">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mysql day03">
-<meta property="og:url" content="https://gaster44.github.io/2023/10/22/mysql-day03/index.html">
+<meta property="og:title" content="mysql day04">
+<meta property="og:url" content="https://gaster44.github.io/2023/10/24/mysql-day04/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="数据导入演示1.怎么将sql文件中的数据导入呢？1234567891011mysql &gt; source+文件路径；mysql &gt; show tables;+-----------------+| Tables_in_hello |+-----------------+| dept            || emp             || salgrade        |+--">
+<meta property="og:description" content="列起别名给查询的列起别名？12345678910mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）+--------+------------+| deptno | deptname   |+--------+------------+|     10 | ACCOUNTING ||     20">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-22T11:07:25.000Z">
-<meta property="article:modified_time" content="2023-10-22T11:49:48.141Z">
+<meta property="article:published_time" content="2023-10-24T12:07:00.000Z">
+<meta property="article:modified_time" content="2023-10-24T12:46:27.190Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>mysql day03 - Gaster44&#39;s blog</title>
+  <title>mysql day04 - Gaster44&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="mysql day03"></span>
+            <span id="subtitle" data-typed-text="mysql day04"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-22 19:07" pubdate>
-          2023年10月22日 晚上
+        <time datetime="2023-10-24 20:07" pubdate>
+          2023年10月24日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          1.4k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          22 分钟
+          12 分钟
         
       </span>
     
@@ -267,36 +267,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">mysql day03</h1>
+            <h1 id="seo-header">mysql day04</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="数据导入演示"><a href="#数据导入演示" class="headerlink" title="数据导入演示"></a>数据导入演示</h1><h3 id="1-怎么将sql文件中的数据导入呢？"><a href="#1-怎么将sql文件中的数据导入呢？" class="headerlink" title="1.怎么将sql文件中的数据导入呢？"></a><strong>1.怎么将sql文件中的数据导入呢？</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt; source+文件路径；<br>mysql &gt; show tables;<br>+-----------------+<br>| Tables_in_hello |<br>+-----------------+<br>| dept            |<br>| emp             |<br>| salgrade        |<br>+-----------------+<br>3 rows in set (0.001 sec)<br>//导入成功。<br></code></pre></td></tr></table></figure>
+                <h1 id="列起别名"><a href="#列起别名" class="headerlink" title="列起别名"></a>列起别名</h1><h3 id="给查询的列起别名？"><a href="#给查询的列起别名？" class="headerlink" title="给查询的列起别名？"></a>给查询的列起别名？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）<br>+--------+------------+<br>| deptno | deptname   |<br>+--------+------------+<br>|     10 | ACCOUNTING |<br>|     20 | RESEARCH   |<br>|     30 | SALES      |<br>|     40 | OPERATIONS |<br>+--------+------------+<br>4 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure>
 
-<p><em>注意：路径中不要有中文！！！</em></p>
-<p><em>关于导入的这几张表：</em></p>
-<p><em>dept是部门表，emp是员工表，salgrade是工资等级表。</em></p>
-<h3 id="2-怎么查看表中的数据呢？"><a href="#2-怎么查看表中的数据呢？" class="headerlink" title="2.怎么查看表中的数据呢？"></a><strong>2.怎么查看表中的数据呢？</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs mysql"> select * from 表名;//*号不是摆设，一表示所有的意思，一定要加上去。<br> +-------+--------+-----------+------+------------+---------+---------+--------+<br>| EMPNO | ENAME  | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO |<br>+-------+--------+-----------+------+------------+---------+---------+--------+<br>|  7369 | SMITH  | CLERK     | 7902 | 1980-12-17 |  800.00 |    NULL |     20 |<br>|  7499 | ALLEN  | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 |<br>|  7521 | WARD   | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 |<br>|  7566 | JONES  | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 |<br>|  7654 | MARTIN | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 |<br>|  7698 | BLAKE  | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 |<br>|  7782 | CLARK  | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 |<br>|  7788 | SCOTT  | ANALYST   | 7566 | 1987-04-19 | 3000.00 |    NULL |     20 |<br>|  7839 | KING   | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 |<br>|  7844 | TURNER | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 |<br>|  7876 | ADAMS  | CLERK     | 7788 | 1987-05-23 | 1100.00 |    NULL |     20 |<br>|  7900 | JAMES  | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 |<br>|  7902 | FORD   | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 |<br>|  7934 | MILLER | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 |<br>+-------+--------+-----------+------+------------+---------+---------+--------+<br>NULL为空的意思。<br></code></pre></td></tr></table></figure>
+<p>使用as关键字起别名，as为alias(别名)的缩写。<em>as可以用空格代替。</em></p>
+<p><em>注意：只是将显示的查询结果列名显示为deptname，原表列名不变</em></p>
+<p><em>记住：select语句永远都不会进行修改操作，因为它的功能只负责查询。</em></p>
+<h3 id="假设起别名的时候，别名里面有空格怎么办？"><a href="#假设起别名的时候，别名里面有空格怎么办？" class="headerlink" title="假设起别名的时候，别名里面有空格怎么办？"></a>假设起别名的时候，别名里面有空格怎么办？</h3><p><strong>mysql &gt;select deptno,dname  dept name from dept;</strong></p>
+<p>DBMS看到这样的语句，进行SQL语句的编译的时候，不符合语法，编译错误。</p>
+<p>怎么解决？</p>
+<p><strong>加引号</strong></p>
+<p> <strong>mysql &gt;select deptno,dname  “dept name” from dept;</strong></p>
+<p><em>注意：在所有的数据库中，字符串统一使用单引号括起来，单引号是标准，双引号在oracle数据库中用不了，但是在mysql中可以使用。</em></p>
+<p><em>Ps：使用中文命名时要使用单引号括起来。</em></p>
+<h1 id="列参与数学运算"><a href="#列参与数学运算" class="headerlink" title="列参与数学运算"></a>列参与数学运算</h1><h3 id="计算员工年薪？"><a href="#计算员工年薪？" class="headerlink" title="计算员工年薪？"></a>计算员工年薪？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt; select ename,sal from emp;<br>+--------+---------+<br>| ename  | sal     |<br>+--------+---------+<br>| SMITH  |  800.00 |<br>| ALLEN  | 1600.00 |<br>| WARD   | 1250.00 |<br>| JONES  | 2975.00 |<br>| MARTIN | 1250.00 |<br>| BLAKE  | 2850.00 |<br>| CLARK  | 2450.00 |<br>| SCOTT  | 3000.00 |<br>| KING   | 5000.00 |<br>| TURNER | 1500.00 |<br>| ADAMS  | 1100.00 |<br>| JAMES  |  950.00 |<br>| FORD   | 3000.00 |<br>| MILLER | 1300.00 |<br>+--------+---------+<br>14 rows in set (0.001 sec)<br>//先查看员工薪资。<br> mysql &gt;select ename,sal*12 from emp;<br>+--------+----------+<br>| ename  | sal*12   |<br>+--------+----------+<br>| SMITH  |  9600.00 |<br>| ALLEN  | 19200.00 |<br>| WARD   | 15000.00 |<br>| JONES  | 35700.00 |<br>| MARTIN | 15000.00 |<br>| BLAKE  | 34200.00 |<br>| CLARK  | 29400.00 |<br>| SCOTT  | 36000.00 |<br>| KING   | 60000.00 |<br>| TURNER | 18000.00 |<br>| ADAMS  | 13200.00 |<br>| JAMES  | 11400.00 |<br>| FORD   | 36000.00 |<br>| MILLER | 15600.00 |<br>+--------+----------+<br>14 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure>
 
-<h1 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt; desc 表名;\\(describe的缩写，表示”描述表的结构&quot;)<br>+--------+-------------+------+-----+---------+-------+<br>| Field  | Type        | Null | Key | Default | Extra |<br>+--------+-------------+------+-----+---------+-------+<br>| DEPTNO | int(2)      | NO   | PRI | NULL    |       |<br>| DNAME  | varchar(14) | YES  |     | NULL    |       |<br>| LOC    | varchar(13) | YES  |     | NULL    |       |<br>+--------+-------------+------+-----+---------+-------+<br>\\varchar就是java中的string。<br></code></pre></td></tr></table></figure>
-
-<h1 id="常用命令继续"><a href="#常用命令继续" class="headerlink" title="常用命令继续"></a>常用命令继续</h1><h3 id="查看mysql数据库的版本号"><a href="#查看mysql数据库的版本号" class="headerlink" title="查看mysql数据库的版本号"></a><strong>查看mysql数据库的版本号</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt; select version();<br>+-----------------+<br>| version()       |<br>+-----------------+<br>| 10.4.28-MariaDB |<br>+-----------------+<br>1 row in set (0.001 sec)<br></code></pre></td></tr></table></figure>
-
-<h3 id="查看当前使用的是哪一个数据库"><a href="#查看当前使用的是哪一个数据库" class="headerlink" title="查看当前使用的是哪一个数据库"></a><strong>查看当前使用的是哪一个数据库</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt;select database();<br>+------------+<br>| database() |<br>+------------+<br>| hello      |<br>+------------+<br>1 row in set (0.000 sec)<br></code></pre></td></tr></table></figure>
-
-<p><em><strong>注：mysql不见分号不执行，因此一定要记得加分号</strong></em>，<em><strong>分号表示中止。</strong></em></p>
-<p>如果想要终止一条正在编写的语句，也可以键入\c。</p>
-<p>如果想要退出mysql，可以用\q,QUIT,EXIT执行。</p>
-<h1 id="简单查询"><a href="#简单查询" class="headerlink" title="简单查询"></a>简单查询</h1><h3 id="1-查询一个字段？"><a href="#1-查询一个字段？" class="headerlink" title="1.查询一个字段？"></a>1.查询一个字段？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt;select 字段名 from 表名;<br>+------------+<br>| dname      |<br>+------------+<br>| ACCOUNTING |<br>| RESEARCH   |<br>| SALES      |<br>| OPERATIONS |<br>+------------+<br>4 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure>
-
-<p><em>其中要注意：select和from都是关键字，字段名和表名都是标识符。</em></p>
-<h3 id="2-查询两个或者多个字段？"><a href="#2-查询两个或者多个字段？" class="headerlink" title="2.查询两个或者多个字段？"></a>2.查询两个或者多个字段？</h3><p>使用逗号隔开。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt;select 字段名，字段名 from 表名;<br>+--------+------------+<br>| deptno | dname      |<br>+--------+------------+<br>|     10 | ACCOUNTING |<br>|     20 | RESEARCH   |<br>|     30 | SALES      |<br>|     40 | OPERATIONS |<br>+--------+------------+<br>4 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure>
-
-<h3 id="3-查询所有字段？"><a href="#3-查询所有字段？" class="headerlink" title="3.查询所有字段？"></a>3.查询所有字段？</h3><p>第一种方式：可以把每一个字段都写上</p>
-<p>第二种方式：可以使用*（参加上面）</p>
-<p>第二种方式缺点：效率低，可读性差（看不懂欸）。</p>
+<p><strong>结论：字段可以使用数字表达式</strong></p>
 
                 
               </div>
@@ -335,8 +325,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>mysql day03</div>
-      <div>https://gaster44.github.io/2023/10/22/mysql-day03/</div>
+      <div>mysql day04</div>
+      <div>https://gaster44.github.io/2023/10/24/mysql-day04/</div>
     </div>
     <div class="license-meta">
       
@@ -348,7 +338,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月22日</div>
+          <div>2023年10月24日</div>
         </div>
       
       
@@ -380,18 +370,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/24/mysql-day04/" title="mysql day04">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">mysql day04</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/21/mysql-day02/" title="mysql day02">
-                        <span class="hidden-mobile">mysql day02</span>
+                      <a href="/2023/10/22/mysql-day03/" title="mysql day03">
+                        <span class="hidden-mobile">mysql day03</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
