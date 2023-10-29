@@ -24,7 +24,7 @@
 <meta property="og:description" content="列起别名给查询的列起别名？12345678910mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）+--------+------------+| deptno | deptname   |+--------+------------+|     10 | ACCOUNTING ||     20">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-24T12:07:00.000Z">
-<meta property="article:modified_time" content="2023-10-24T12:46:27.190Z">
+<meta property="article:modified_time" content="2023-10-29T08:43:17.634Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          3.8k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          12 分钟
+          32 分钟
         
       </span>
     
@@ -287,6 +287,92 @@
 <h1 id="列参与数学运算"><a href="#列参与数学运算" class="headerlink" title="列参与数学运算"></a>列参与数学运算</h1><h3 id="计算员工年薪？"><a href="#计算员工年薪？" class="headerlink" title="计算员工年薪？"></a>计算员工年薪？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt; select ename,sal from emp;<br>+--------+---------+<br>| ename  | sal     |<br>+--------+---------+<br>| SMITH  |  800.00 |<br>| ALLEN  | 1600.00 |<br>| WARD   | 1250.00 |<br>| JONES  | 2975.00 |<br>| MARTIN | 1250.00 |<br>| BLAKE  | 2850.00 |<br>| CLARK  | 2450.00 |<br>| SCOTT  | 3000.00 |<br>| KING   | 5000.00 |<br>| TURNER | 1500.00 |<br>| ADAMS  | 1100.00 |<br>| JAMES  |  950.00 |<br>| FORD   | 3000.00 |<br>| MILLER | 1300.00 |<br>+--------+---------+<br>14 rows in set (0.001 sec)<br>//先查看员工薪资。<br> mysql &gt;select ename,sal*12 from emp;<br>+--------+----------+<br>| ename  | sal*12   |<br>+--------+----------+<br>| SMITH  |  9600.00 |<br>| ALLEN  | 19200.00 |<br>| WARD   | 15000.00 |<br>| JONES  | 35700.00 |<br>| MARTIN | 15000.00 |<br>| BLAKE  | 34200.00 |<br>| CLARK  | 29400.00 |<br>| SCOTT  | 36000.00 |<br>| KING   | 60000.00 |<br>| TURNER | 18000.00 |<br>| ADAMS  | 13200.00 |<br>| JAMES  | 11400.00 |<br>| FORD   | 36000.00 |<br>| MILLER | 15600.00 |<br>+--------+----------+<br>14 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure>
 
 <p><strong>结论：字段可以使用数字表达式</strong></p>
+<h1 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h1><h2 id="什么是条件查询？"><a href="#什么是条件查询？" class="headerlink" title="什么是条件查询？"></a>什么是条件查询？</h2><p>不是将表中的所有数据都查出来，是查询出来符合条件的。</p>
+<p><strong>语法格式：</strong></p>
+<p><strong>select</strong> ….字段1，字段2，字段3…<strong>from</strong> 表名 <strong>where</strong> 条件;</p>
+<p>条件查询需要用到where语句，where必须放到from语句表的后面。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td align="left">等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;或者！&#x3D;</td>
+<td align="left">不等于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td align="left">小于</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td align="left">小于等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td align="left">大于</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td align="left">大于等于</td>
+</tr>
+<tr>
+<td>between…and…</td>
+<td align="left">两个值之间，等同于&gt;&#x3D; and &lt;&#x3D;<em>（左小右大）（闭区间）</em></td>
+</tr>
+<tr>
+<td>is null</td>
+<td align="left">为null<em>（is not null 不为空)</em></td>
+</tr>
+<tr>
+<td>and</td>
+<td align="left">并且</td>
+</tr>
+<tr>
+<td>or</td>
+<td align="left">或者</td>
+</tr>
+<tr>
+<td>in</td>
+<td align="left">包含，相当于多个or<em>（not in 不在这个范围中）</em></td>
+</tr>
+<tr>
+<td>not</td>
+<td align="left">not 可以取非，主要用在is或者in中</td>
+</tr>
+<tr>
+<td>like</td>
+<td align="left">like成为模糊查询，支持%或者下划线匹配，                          %匹配任意给字符，                                                                                      下划线，一个下划线只匹配一个字符。</td>
+</tr>
+</tbody></table>
+<p>具体方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select EMPNO from emp where EMPNO&gt;7900;<br>+-------+<br>| EMPNO |<br>+-------+<br>|  7902 |<br>|  7934 |<br>+-------+<br>//查询编号大于7900的员工编号。<br>2 rows in set (0.001 sec)MariaDB [hello]&gt; select ename,empno from emp where sal&gt;790;<br>+--------+-------+<br>| ename  | empno |<br>+--------+-------+<br>| SMITH  |  7369 |<br>| ALLEN  |  7499 |<br>| WARD   |  7521 |<br>| JONES  |  7566 |<br>| MARTIN |  7654 |<br>| BLAKE  |  7698 |<br>| CLARK  |  7782 |<br>| SCOTT  |  7788 |<br>| KING   |  7839 |<br>| TURNER |  7844 |<br>| ADAMS  |  7876 |<br>| JAMES  |  7900 |<br>| FORD   |  7902 |<br>| MILLER |  7934 |<br>+--------+-------+<br>14 rows in set (0.001 sec)<br>//查询工资大于790的员工姓名和编号。<br>MariaDB [hello]&gt; select ename empno from emp where comm is null;<br>+--------+<br>| empno  |<br>+--------+<br>| SMITH  |<br>| JONES  |<br>| BLAKE  |<br>| CLARK  |<br>| SCOTT  |<br>| KING   |<br>| ADAMS  |<br>| JAMES  |<br>| FORD   |<br>| MILLER |<br>+--------+<br><br></code></pre></td></tr></table></figure>
+
+<p>注意：在数据库中null不能使用等号进行衡量。需要使用is null，因为数据库中的<strong>null代表什么也没有</strong>，它不是一个值，所以不能使用等号衡量。</p>
+<p><strong>and和or同时出现的话，有优先级问题吗</strong>？</p>
+<p>and优先级比or高！！！语句会先执行and之后执行or。</p>
+<p><em>解决方案：加括号！</em></p>
+<p><strong>in的用法：</strong></p>
+<p>in（’a’，’b’）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select JOB,ename from emp where job in (&#x27;CLERK&#x27;,&#x27;ANALYST&#x27;);<br>+---------+--------+<br>| JOB     | ename  |<br>+---------+--------+<br>| CLERK   | SMITH  |<br>| ANALYST | SCOTT  |<br>| CLERK   | ADAMS  |<br>| CLERK   | JAMES  |<br>| ANALYST | FORD   |<br>| CLERK   | MILLER |<br>+---------+--------+<br>6 rows in set (0.001 sec)<br>//查询工作是分析师和文员的工作人员，用in语句。<br></code></pre></td></tr></table></figure>
+
+<p><em><strong>注意：in不是一个区间，in后面跟的是一个具体的值。</strong></em></p>
+<p><strong>关于like</strong></p>
+<p>​	称为模糊查询，支持%或下划线匹配。</p>
+<p>​	%匹配任意个字符</p>
+<p>​	下划线，一个下划线只匹配一个字符</p>
+<p>（%是一个特殊符号，_也是一个特殊符号）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select ename from emp where ename like &#x27;%o%&#x27;;<br>+-------+<br>| ename |<br>+-------+<br>| JONES |<br>| SCOTT |<br>| FORD  |<br>+-------+<br>3 rows in set (0.000 sec)<br>//查询名字里面有o的人名。<br>MariaDB [hello]&gt; select ename from emp where ename like &#x27;%T&#x27;;<br>+-------+<br>| ename |<br>+-------+<br>| SCOTT |<br>+-------+<br>1 row in set (0.001 sec)<br>//查询名字后面以t结尾的人名。<br>MariaDB [hello]&gt;  select ename from emp where ename like &#x27;k%&#x27;;<br>+-------+<br>| ename |<br>+-------+<br>| KING  |<br>+-------+<br>1 row in set (0.000 sec)<br>//查询名字以k开头的人名。<br>MariaDB [hello]&gt;  select ename from emp where ename like &#x27;_A%&#x27;;<br>+--------+<br>| ename  |<br>+--------+<br>| WARD   |<br>| MARTIN |<br>| JAMES  |<br>+--------+<br>3 rows in set (0.001 sec)<br>//查询名字中第二个字母是A的人名。<br></code></pre></td></tr></table></figure>
+
+<p><em>注意：找出名字中有下划线的</em></p>
+<p><strong>select name from t_student where like ‘%\_%’;</strong></p>
+<p><strong>使用转义字符让下划线保留。</strong></p>
 
                 
               </div>
@@ -369,6 +455,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/10/26/%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/" title="异常捕获">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">异常捕获</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
