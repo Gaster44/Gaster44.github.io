@@ -24,7 +24,7 @@
 <meta property="og:description" content="关于分组查询（非常重要！！！）什么是分组查询？在实际的应用中，可能有这样的需求，需要先进行分组，然后对每一组的数据进行操作。这个时候我们需要使用分组查询。怎么进行分组查询呢？ 语法基础：  select … from … group by … eg：计算每个部门的工资和？ 计算每个工作岗位的平均薪资？ 找出每个工作岗位的最高薪资？ 关于执行顺序select…from …where…group by">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-03T16:23:49.000Z">
-<meta property="article:modified_time" content="2023-11-03T16:48:27.337Z">
+<meta property="article:modified_time" content="2023-11-06T11:44:08.201Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          284 字
+          2.5k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          3 分钟
+          21 分钟
         
       </span>
     
@@ -287,6 +287,28 @@
 <p><strong>5.order by</strong></p>
 <h3 id="具体案例"><a href="#具体案例" class="headerlink" title="具体案例"></a>具体案例</h3><p>1.找出每个工作岗位的工资和？</p>
 <p>实现思路：按照工作岗位分组，然后对工资求和。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select sum(sal),job from emp group by job;<br>+----------+-----------+<br>| sum(sal) | job       |<br>+----------+-----------+<br>|  6000.00 | ANALYST   |<br>|  4150.00 | CLERK     |<br>|  8275.00 | MANAGER   |<br>|  5000.00 | PRESIDENT |<br>|  5600.00 | SALESMAN  |<br>+----------+-----------+<br>5 rows in set (0.001 sec)<br>//以上语句的执行顺序？<br>先从emp表中查询数据，根据job字段进行分组，然后对每一组的数据进行sum（sal）<br>MariaDB [hello]&gt; select ename,job from emp group by job;<br>+-------+-----------+<br>| ename | job       |<br>+-------+-----------+<br>| SCOTT | ANALYST   |<br>| SMITH | CLERK     |<br>| JONES | MANAGER   |<br>| KING  | PRESIDENT |<br>| ALLEN | SALESMAN  |<br>+-------+-----------+<br>5 rows in set (0.001 sec)<br>//以上语句在mysql中可以执行，但是毫无意义<br>//以上语句在oracle中执行报错。<br>//oracle的语法比mysql的语法严格。（mysql的语法相对来说松散一些！）<br>//ename有14条记录，而job只有5条，不匹配。<br></code></pre></td></tr></table></figure>
+
+<h4 id="重点结论："><a href="#重点结论：" class="headerlink" title="重点结论："></a><strong>重点结论</strong>：</h4><p>​	<strong>在一条select语句当中，如果有group by 语句的话，select后面只能跟参加分组的字段以及分组函数，其他的一律不能跟。</strong></p>
+<p>2.找出每个部门，不同工作岗位的最高薪资？</p>
+<p>技巧：两个字段联合成1个字段来看。（两个字段联合分组）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt;  select deptno,job,max(sal)from emp group by deptno,job;<br>+--------+-----------+----------+<br>| deptno | job       | max(sal) |<br>+--------+-----------+----------+<br>|     10 | CLERK     |  1300.00 |<br>|     10 | MANAGER   |  2450.00 |<br>|     10 | PRESIDENT |  5000.00 |<br>|     20 | ANALYST   |  3000.00 |<br>|     20 | CLERK     |  1100.00 |<br>|     20 | MANAGER   |  2975.00 |<br>|     30 | CLERK     |   950.00 |<br>|     30 | MANAGER   |  2850.00 |<br>|     30 | SALESMAN  |  1600.00 |<br>+--------+-----------+----------+<br>9 rows in set (0.001 sec)<br>//逗号将deptno与job一起变成联合字段。<br></code></pre></td></tr></table></figure>
+
+<p>3.找出每个部门最高薪资，要求显示最高薪资大于3000的？</p>
+<p>​	第一步：找出每个部门的最高薪资，按照部门编号进行分组，</p>
+<p>​	第二步：要求显示最高薪资大于3000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select max(sal),deptno from emp group by deptno having max(sal)&gt;3000;<br>+----------+--------+<br>| max(sal) | deptno |<br>+----------+--------+<br>|  5000.00 |     10 |<br>+----------+--------+<br>1 row in set (0.001 sec)<br></code></pre></td></tr></table></figure>
+
+<p><em><strong>Ps：关于having语句：</strong></em></p>
+<p>使用having语句可以对分完组之后的数据进行进一步的过滤，having不能单独使用，having不能替代where，并且having必须和group by联合使用。</p>
+<p>思考：以上的sql语句执行效率是不是低了？</p>
+<p>实际上可以这样考虑：先将大于3000的都找出来，然后在进行分组。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select max(sal),deptno from emp where sal&gt;3000 group by deptno;<br>+----------+--------+<br>| max(sal) | deptno |<br>+----------+--------+<br>|  5000.00 |     10 |<br>+----------+--------+<br>1 row in set (0.001 sec)<br>//记住！！！！分组函数不能用在where后面！！！！！！！<br></code></pre></td></tr></table></figure>
+
+<p><strong>Ps：但是也有where完成不了的语句</strong></p>
+<p>找出每个部门平均薪资，要求显示平均薪资高于2500的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select deptno,avg(sal) from emp group by deptno having avg(sal)&gt;2500;<br>+--------+-------------+<br>| deptno | avg(sal)    |<br>+--------+-------------+<br>|     10 | 2916.666667 |<br>+--------+-------------+<br>1 row in set (0.001 sec)<br>//where后面不能跟函数！！！！！！！只能用having。<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
