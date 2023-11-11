@@ -24,7 +24,7 @@
 <meta property="og:description" content="mysql day 01什么是数据库？什么是数据库管理系统？什么是SQL？它们之间的关系是什么？数据库：​	英文单词DataBase，简称DB，按照一定格式存储数据的一些文件的组合。顾名思义：存储数据的仓库，实际上就是一堆文件。这些文件中存储了具有特定格式的数据。 数据库管理系统：​	DataBaseManagement，简称DBMS。 ​	数据库管理系统是专门用来管理数据库中数据的，数据库管理系">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-10-21T15:12:41.000Z">
-<meta property="article:modified_time" content="2023-10-21T15:41:47.620Z">
+<meta property="article:modified_time" content="2023-11-08T16:45:00.202Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          430 字
+          782 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -281,6 +281,10 @@
 <p>​	SQL是一套标准，程序员主要学校的就是SQL语句，这个SQL在mysql中可以使用，同时在Oracle中也可以使用，在DB2中也可以使用。</p>
 <h4 id="三者关系："><a href="#三者关系：" class="headerlink" title="三者关系："></a>三者关系：</h4><p>​	   DBMS–执行→SQL–操作→DB</p>
 <p>​	</p>
+<h2 id="关于数据库"><a href="#关于数据库" class="headerlink" title="关于数据库"></a>关于数据库</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [(none)]&gt; show databases;<br>+--------------------+<br>| Database           |<br>+--------------------+<br>| hello              |<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>| phpmyadmin         |<br>| test               |<br>+--------------------+<br>6 rows in set (0.037 sec)<br></code></pre></td></tr></table></figure>
+
+<p><em><strong>除了第一个hello数据库是自己创建的，其他都是系统自带的！</strong></em></p>
+<p>information_schema库：是信息数据库，其中保存着关于MySQL服务器所维护的所有其他数据库的信息，比如数据库名，数据库表，表字段的数据类型，访问权限等等，在Web领域渗透过程中用途很大。</p>
 
                 
               </div>
