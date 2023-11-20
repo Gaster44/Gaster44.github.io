@@ -16,15 +16,15 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="复杂数据类型（二）一.二维数组基本概念二维数组是使用两个下标（索引）来确定元素的数组，两个下标可以理解成行标和列标。 eg： 1 2 3 ​         4 5 6 可以用二维数组int[2,3]表示，好比两行三列的数据集合。 在内存里面依据行优先存储原则，一行行横向存放。 二.二维数组的申明变量类型[,]二维数组变量名;1int [,] arr;&#x2F;&#x2F;申明过后要在后面进行初始化  变量类型[,">
+    <meta name="description" content="复杂数据类型（二）一.二维数组基本概念二维数组是使用两个下标（索引）来确定元素的数组，两个下标可以理解成行标和列标。 eg： 1 2 3 ​         4 5 6 可以用二维数组int[2,3]表示，好比两行三列的数据集合。 在内存里面依据行优先存储原则，一行行横向存放。 二维数组的申明变量类型[,]二维数组变量名;1int [,] arr;&#x2F;&#x2F;申明过后要在后面进行初始化  变量类型[,]二">
 <meta property="og:type" content="article">
 <meta property="og:title" content="复杂数据类型(二)">
 <meta property="og:url" content="https://gaster44.github.io/2023/11/16/%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B(%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="复杂数据类型（二）一.二维数组基本概念二维数组是使用两个下标（索引）来确定元素的数组，两个下标可以理解成行标和列标。 eg： 1 2 3 ​         4 5 6 可以用二维数组int[2,3]表示，好比两行三列的数据集合。 在内存里面依据行优先存储原则，一行行横向存放。 二.二维数组的申明变量类型[,]二维数组变量名;1int [,] arr;&#x2F;&#x2F;申明过后要在后面进行初始化  变量类型[,">
+<meta property="og:description" content="复杂数据类型（二）一.二维数组基本概念二维数组是使用两个下标（索引）来确定元素的数组，两个下标可以理解成行标和列标。 eg： 1 2 3 ​         4 5 6 可以用二维数组int[2,3]表示，好比两行三列的数据集合。 在内存里面依据行优先存储原则，一行行横向存放。 二维数组的申明变量类型[,]二维数组变量名;1int [,] arr;&#x2F;&#x2F;申明过后要在后面进行初始化  变量类型[,]二">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-11-16T12:14:47.000Z">
-<meta property="article:modified_time" content="2023-11-16T13:03:06.658Z">
+<meta property="article:modified_time" content="2023-11-20T14:56:19.963Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          2.1k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          11 分钟
+          18 分钟
         
       </span>
     
@@ -277,7 +277,7 @@
 <p>​         <em>4 5 6</em></p>
 <p>可以用二维数组int[2,3]表示，好比两行三列的数据集合。</p>
 <p>在内存里面依据行优先存储原则，一行行横向存放。</p>
-<h3 id="二-二维数组的申明"><a href="#二-二维数组的申明" class="headerlink" title="二.二维数组的申明"></a>二.二维数组的申明</h3><h4 id="变量类型-二维数组变量名"><a href="#变量类型-二维数组变量名" class="headerlink" title="变量类型[,]二维数组变量名;"></a>变量类型[,]二维数组变量名;</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> [,] arr;<span class="hljs-comment">//申明过后要在后面进行初始化</span><br></code></pre></td></tr></table></figure>
+<h3 id="二维数组的申明"><a href="#二维数组的申明" class="headerlink" title="二维数组的申明"></a>二维数组的申明</h3><h4 id="变量类型-二维数组变量名"><a href="#变量类型-二维数组变量名" class="headerlink" title="变量类型[,]二维数组变量名;"></a>变量类型[,]二维数组变量名;</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> [,] arr;<span class="hljs-comment">//申明过后要在后面进行初始化</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="变量类型-二维数组变量名-new-变量类型-行-列"><a href="#变量类型-二维数组变量名-new-变量类型-行-列" class="headerlink" title="变量类型[,]二维数组变量名 &#x3D;new 变量类型[行,列];"></a>变量类型[,]二维数组变量名 &#x3D;new 变量类型[行,列];</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> [,] arr2=<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[<span class="hljs-number">3</span>,<span class="hljs-number">3</span>];<br></code></pre></td></tr></table></figure>
 
@@ -287,7 +287,7 @@
 
 <h4 id="变量类型-二维数组变量名-1"><a href="#变量类型-二维数组变量名-1" class="headerlink" title="变量类型[,]二维数组变量名 &#x3D;;"></a>变量类型[,]二维数组变量名 &#x3D;;</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> [,] arr5=&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;&#125;;<br></code></pre></td></tr></table></figure>
 
-<h2 id="三-二维数组的使用"><a href="#三-二维数组的使用" class="headerlink" title="三.二维数组的使用"></a>三.二维数组的使用</h2><h4 id="二维数组的长度"><a href="#二维数组的长度" class="headerlink" title="二维数组的长度"></a>二维数组的长度</h4><p>我们要获取行和列分别是多长.</p>
+<h3 id="二维数组的使用"><a href="#二维数组的使用" class="headerlink" title="二维数组的使用"></a>二维数组的使用</h3><h4 id="二维数组的长度"><a href="#二维数组的长度" class="headerlink" title="二维数组的长度"></a>二维数组的长度</h4><p>我们要获取行和列分别是多长.</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span>[,] array =<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[,]&#123;&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;&#125;<br>Console.WriteLine(array.GetLength(<span class="hljs-number">0</span>));<br><span class="hljs-comment">//得到多少行;</span><br>Console.WriteLine(array.GetLength(<span class="hljs-number">1</span>));<br><span class="hljs-comment">//得到多少列;</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="获取二维数组中的元素"><a href="#获取二维数组中的元素" class="headerlink" title="获取二维数组中的元素"></a>获取二维数组中的元素</h4><p>依据下标进行索引.</p>
@@ -301,6 +301,20 @@
 
 <h4 id="删除数组的元素"><a href="#删除数组的元素" class="headerlink" title="删除数组的元素"></a>删除数组的元素</h4><p>和增加异曲同工,也不想写啦!!!!!!</p>
 <h4 id="查找数组中的元素"><a href="#查找数组中的元素" class="headerlink" title="查找数组中的元素"></a>查找数组中的元素</h4><p>进行遍历查找,必要可以使用算法.</p>
+<h2 id="二-交错数组"><a href="#二-交错数组" class="headerlink" title="二.交错数组"></a>二.交错数组</h2><p>（咱们了解一下即可，实际应用较少）</p>
+<h3 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h3><p>交错数组是数组的数组，每个维度的数量可以不同。</p>
+<p>注意：二维数组的每行的列数相同，交错数组每行的列数可能不同。</p>
+<h3 id="数组的申明"><a href="#数组的申明" class="headerlink" title="数组的申明"></a>数组的申明</h3><h4 id="变量类型-交错数组名"><a href="#变量类型-交错数组名" class="headerlink" title="变量类型[ ]&#x2F;&#x2F;[ ] 交错数组名;"></a>变量类型[ ]&#x2F;&#x2F;[ ] 交错数组名;</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span>[][]=arr1;<br><span class="hljs-comment">//与二维数组不同的是方框里面没有逗号。</span><br></code></pre></td></tr></table></figure>
+
+<p>之后的申明和一维二维差不多，直接写了，不起标题了。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span>[][] arr2=<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[<span class="hljs-number">3</span>][];<br><span class="hljs-comment">//有三行，但是具体多少列，不确定.</span><br><span class="hljs-built_in">int</span>[][] arr3=<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[<span class="hljs-number">3</span>][]&#123;<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,<br>    					  <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;,<br>                          <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>&#125;;<br>&#125;<br><span class="hljs-comment">//行数固定，列数不固定，数组类型仍然一致，是“数组的数组”。</span><br><span class="hljs-built_in">int</span>[][] arr4=<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[][]&#123;<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,<br>    					  <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;,<br>                          <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>&#125;&#125;;<br><span class="hljs-built_in">int</span>[][] arr5=&#123;<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,<br>    		   <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>&#125;,<br>               <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>&#125;&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="数组的使用"><a href="#数组的使用" class="headerlink" title="数组的使用"></a>数组的使用</h3><h4 id="数组的长度"><a href="#数组的长度" class="headerlink" title="数组的长度"></a>数组的长度</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> [][] array=&#123;<span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>&#125;,<br>                <span class="hljs-keyword">new</span> <span class="hljs-built_in">int</span>[]&#123;<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;&#125;;<br>Console.WriteLine(array.GetLength(<span class="hljs-number">0</span>));<br><span class="hljs-comment">//得到行数.</span><br>Console.WriteLine(array[<span class="hljs-number">0</span>].Length);<br><span class="hljs-comment">//得到某一行的列数.</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="获取交错数组中的元素"><a href="#获取交错数组中的元素" class="headerlink" title="获取交错数组中的元素"></a>获取交错数组中的元素</h4><p>直接获取，不解释。</p>
+<h4 id="修改交错数组中的元素"><a href="#修改交错数组中的元素" class="headerlink" title="修改交错数组中的元素"></a>修改交错数组中的元素</h4><p>同上，直接赋值。</p>
+<h3 id="遍历交错数组"><a href="#遍历交错数组" class="headerlink" title="遍历交错数组"></a>遍历交错数组</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">0</span>;i&lt;array.GerLength(<span class="hljs-number">0</span>);i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> j=<span class="hljs-number">0</span>;j&lt;array[i].Length;j++)&#123;<br>        Console.WriteLine(array[i][j]);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//列的获取要先得到行.</span><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
