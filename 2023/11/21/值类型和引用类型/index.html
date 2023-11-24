@@ -29,7 +29,7 @@
 <meta property="og:image" content="d:\HONOR Share\Screenshot\capture_20231121200841986.bmp">
 <meta property="og:image" content="d:\HONOR Share\Screenshot\capture_20231121203315826.bmp">
 <meta property="article:published_time" content="2023-11-21T11:34:36.000Z">
-<meta property="article:modified_time" content="2023-11-21T12:40:06.552Z">
+<meta property="article:modified_time" content="2023-11-23T12:48:36.297Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="d:\HONOR Share\Screenshot\capture_20231121195451927.bmp">
@@ -236,7 +236,7 @@
         
         
         
-          17 分钟
+          18 分钟
         
       </span>
     
@@ -308,7 +308,8 @@
 <img src="D:\HONOR Share\Screenshot\capture_20231121200841986.bmp" srcset="/img/loading.gif" lazyload style="zoom:45%;" />
 
 <p>（由上图可知，如果arr2&#x3D;new int[]，相当于在堆空间中开辟了一片新的区域，arr2则存储了这一片新区域的新地址，因此，之后的修改自然和原来的arr没有关系了。</p>
-<h2 id="二-特殊的引用类型string"><a href="#二-特殊的引用类型string" class="headerlink" title="二.特殊的引用类型string"></a>二.特殊的引用类型string</h2><h3 id="string的“它变我不变”"><a href="#string的“它变我不变”" class="headerlink" title="string的“它变我不变”"></a>string的“它变我不变”</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str1=<span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-built_in">string</span> str2=str1;<br>str2=<span class="hljs-string">&quot;321&quot;</span>;<br><span class="hljs-comment">//因为string是引用类型，按理说，应该是它变我也变。</span><br>Console.WriteLine(str1);<br>Console.WrtieLine(str2);<br><span class="hljs-comment">//最后却会输出123，321.变成它变我不变了。</span><br></code></pre></td></tr></table></figure>
+<p><em>学了ref和out之后可以对这种情况进行解析了</em></p>
+<h2 id="二-特殊的引用类型string（！！！重要）"><a href="#二-特殊的引用类型string（！！！重要）" class="headerlink" title="二.特殊的引用类型string（！！！重要）"></a>二.特殊的引用类型string（！！！重要）</h2><h3 id="string的“它变我不变”"><a href="#string的“它变我不变”" class="headerlink" title="string的“它变我不变”"></a>string的“它变我不变”</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str1=<span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-built_in">string</span> str2=str1;<br>str2=<span class="hljs-string">&quot;321&quot;</span>;<br><span class="hljs-comment">//因为string是引用类型，按理说，应该是它变我也变。</span><br>Console.WriteLine(str1);<br>Console.WrtieLine(str2);<br><span class="hljs-comment">//最后却会输出123，321.变成它变我不变了。</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>为什么和普通的引用类型不一样？？？</strong></p>
 <p>string非常的特殊，它具备值类型的特征，它变我不变。</p>
@@ -399,6 +400,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/11/22/%E5%87%BD%E6%95%B0%E4%B8%80/" title="函数一">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">函数一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
