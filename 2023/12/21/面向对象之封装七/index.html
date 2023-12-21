@@ -16,21 +16,21 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="关于类型转换一.隐式转换什么是类型转换？就是不同变量类型之间的相互转换 隐式转换的基本规则→不同类型之间自动切换 （大范围装小范围）（核心）1.相同大类型之间的转换1234567long l&#x3D;1;int i&#x3D;1;short s&#x3D;1;l&#x3D;i;&#x2F;&#x2F;隐士转换，int隐式转换成longi&#x3D;l;&#x2F;&#x2F;会报错，不能用小范围的类型去装在大范围的类型。  2.不同大类型之间的转换无符号和有符号之间1234567by">
+    <meta name="description" content="静态成员一.静态成员基本概念静态关键字 static 用static修饰的成员变量，方法，属性等称为静态成员 静态成员的特点是：直接用类名点出使用 二.自定义静态成员12345678910111213class Test&amp;#123;    public static float PI&#x3D;3.1415926f;    &#x2F;&#x2F;静态成员变量    public int testInt&#x3D;100;    &#x2F;&#x2F;做">
 <meta property="og:type" content="article">
-<meta property="og:title" content="类型转换">
-<meta property="og:url" content="https://gaster44.github.io/2023/10/21/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:title" content="面向对象之封装七">
+<meta property="og:url" content="https://gaster44.github.io/2023/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E4%B8%83/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="关于类型转换一.隐式转换什么是类型转换？就是不同变量类型之间的相互转换 隐式转换的基本规则→不同类型之间自动切换 （大范围装小范围）（核心）1.相同大类型之间的转换1234567long l&#x3D;1;int i&#x3D;1;short s&#x3D;1;l&#x3D;i;&#x2F;&#x2F;隐士转换，int隐式转换成longi&#x3D;l;&#x2F;&#x2F;会报错，不能用小范围的类型去装在大范围的类型。  2.不同大类型之间的转换无符号和有符号之间1234567by">
+<meta property="og:description" content="静态成员一.静态成员基本概念静态关键字 static 用static修饰的成员变量，方法，属性等称为静态成员 静态成员的特点是：直接用类名点出使用 二.自定义静态成员12345678910111213class Test&amp;#123;    public static float PI&#x3D;3.1415926f;    &#x2F;&#x2F;静态成员变量    public int testInt&#x3D;100;    &#x2F;&#x2F;做">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-10-21T13:14:02.000Z">
-<meta property="article:modified_time" content="2023-12-18T15:11:22.765Z">
+<meta property="article:published_time" content="2023-12-21T13:20:14.000Z">
+<meta property="article:modified_time" content="2023-12-21T15:58:32.744Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>类型转换 - Gaster44&#39;s blog</title>
+  <title>面向对象之封装七 - Gaster44&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="类型转换"></span>
+            <span id="subtitle" data-typed-text="面向对象之封装七"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-21 21:14" pubdate>
-          2023年10月21日 晚上
+        <time datetime="2023-12-21 21:20" pubdate>
+          2023年12月21日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.2k 字
+          1.6k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          19 分钟
+          14 分钟
         
       </span>
     
@@ -267,54 +267,45 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">类型转换</h1>
+            <h1 id="seo-header">面向对象之封装七</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="关于类型转换"><a href="#关于类型转换" class="headerlink" title="关于类型转换"></a>关于类型转换</h1><h2 id="一-隐式转换"><a href="#一-隐式转换" class="headerlink" title="一.隐式转换"></a>一.隐式转换</h2><p>什么是类型转换？<br>就是不同变量类型之间的相互转换</p>
-<p><strong>隐式转换的基本规则→不同类型之间自动切换</strong></p>
-<h4 id="（大范围装小范围）（核心）"><a href="#（大范围装小范围）（核心）" class="headerlink" title="（大范围装小范围）（核心）"></a><strong>（大范围装小范围）（核心）</strong></h4><h3 id="1-相同大类型之间的转换"><a href="#1-相同大类型之间的转换" class="headerlink" title="1.相同大类型之间的转换"></a>1.相同大类型之间的转换</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">long</span> l=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">short</span> s=<span class="hljs-number">1</span>;<br>l=i;<br><span class="hljs-comment">//隐士转换，int隐式转换成long</span><br>i=l;<br><span class="hljs-comment">//会报错，不能用小范围的类型去装在大范围的类型。</span><br></code></pre></td></tr></table></figure>
+                <h1 id="静态成员"><a href="#静态成员" class="headerlink" title="静态成员"></a>静态成员</h1><h2 id="一-静态成员基本概念"><a href="#一-静态成员基本概念" class="headerlink" title="一.静态成员基本概念"></a>一.静态成员基本概念</h2><p>静态关键字 static</p>
+<p>用static修饰的成员变量，方法，属性等称为静态成员</p>
+<p>静态成员的特点是：直接用类名点出使用</p>
+<h2 id="二-自定义静态成员"><a href="#二-自定义静态成员" class="headerlink" title="二.自定义静态成员"></a>二.自定义静态成员</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> PI=<span class="hljs-number">3.1415926f</span>;<br>    <span class="hljs-comment">//静态成员变量</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> testInt=<span class="hljs-number">100</span>;<br>    <span class="hljs-comment">//做对比</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> <span class="hljs-title">CalcCircle</span>(<span class="hljs-params"><span class="hljs-built_in">float</span> r</span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> PI*r*r;<br>	&#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestFun</span>()</span>&#123;<br>        Console.WriteLine(<span class="hljs-string">&quot;123&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">//做对比</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="2-不同大类型之间的转换"><a href="#2-不同大类型之间的转换" class="headerlink" title="2.不同大类型之间的转换"></a>2.不同大类型之间的转换</h3><h4 id="无符号和有符号之间"><a href="#无符号和有符号之间" class="headerlink" title="无符号和有符号之间"></a>无符号和有符号之间</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">byte</span> b2=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">sbyte</span> b1=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> b3=<span class="hljs-number">1</span>;<br>b2=b1;<br><span class="hljs-comment">//无符号不能装有符号，有符号的变量是不能够隐式转换成无符号的。</span><br>b3=b2;<br><span class="hljs-comment">//有符号装无符号，前提：有符号的变量不管是多少，都能包裹无符号变量。</span><br></code></pre></td></tr></table></figure>
+<h2 id="三-静态成员的使用"><a href="#三-静态成员的使用" class="headerlink" title="三.静态成员的使用"></a>三.静态成员的使用</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>&#123;<br>    	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> PI=<span class="hljs-number">3.1415926f</span>;<br>    	<span class="hljs-comment">//静态成员变量</span><br>    	<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> testInt=<span class="hljs-number">100</span>;<br>    	<span class="hljs-comment">//做对比</span><br>    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> <span class="hljs-title">CalcCircle</span>(<span class="hljs-params"><span class="hljs-built_in">float</span> r</span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> PI*r*r;<br>		&#125;<br>    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestFun</span>()</span>&#123;<br>        	Console.WriteLine(<span class="hljs-string">&quot;123&quot;</span>);<br>    	&#125;<br>    	<span class="hljs-comment">//做对比</span><br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(Test.PI);<br>            Console.WriteLine(Test.CalcCircle(<span class="hljs-number">2</span>));<br>            <span class="hljs-comment">//这样就可以了，直接点出来使用。</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="浮点数装整数"><a href="#浮点数装整数" class="headerlink" title="浮点数装整数"></a>浮点数装整数</h4><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">float</span> f2=<span class="hljs-number">1.1f</span>;<br><span class="hljs-built_in">long</span> i1=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">ulong</span> i2=<span class="hljs-number">1</span>;<br>f2=i1;<br>f2=i2;<br><span class="hljs-comment">//浮点数是可以装载任何类型的整数。</span><br></code></pre></td></tr></table></figure>
+<h2 id="四-为什么可以直接点出来使用"><a href="#四-为什么可以直接点出来使用" class="headerlink" title="四.为什么可以直接点出来使用"></a>四.为什么可以直接点出来使用</h2><p><strong>记住！！！！！！！！</strong></p>
+<p>程序中是不能无中生有的</p>
+<p>我们要使用的对象，变量，函数都是要在内存中分配内存空间的</p>
+<p>之所以要实例化对象，目的就是分配内存空间，在程序中产生一个抽象的对象</p>
+<p><strong>静态成员的特点</strong></p>
+<p>程序开始运行时，就会分配一个内存空间，所以我们就可以直接使用</p>
+<p><strong>静态成员和程序“同生共死”</strong></p>
+<p>只要使用了它，直到程序结束时内存空间才会被释放</p>
+<p>所以应该静态成员就会有直接唯一的应该“内存小空间”</p>
+<p><strong>这让静态成员有了唯一性</strong></p>
+<p>在任何地方使用都是用的小房间里的内容，改变了它也是改变小房间里的内容。</p>
+<h2 id="五-静态函数中不能使用非静态成员"><a href="#五-静态函数中不能使用非静态成员" class="headerlink" title="五.静态函数中不能使用非静态成员"></a>五.静态函数中不能使用非静态成员</h2><p>成员变量只能将对象实例化出来后，才能点出来使用，不能无中生有。</p>
+<p>不能直接使用非静态成员，否则会报错。</p>
+<p>（非静态成员一定需要实例化对象之后，（new一个对象），才能使用）</p>
+<h2 id="六-非静态函数可以使用静态成员"><a href="#六-非静态函数可以使用静态成员" class="headerlink" title="六.非静态函数可以使用静态成员"></a>六.非静态函数可以使用静态成员</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c#"> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>&#123;<br>    	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> PI=<span class="hljs-number">3.1415926f</span>;<br>    	<span class="hljs-comment">//静态成员变量</span><br>    	<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> testInt=<span class="hljs-number">100</span>;<br>    	<span class="hljs-comment">//做对比</span><br>    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">float</span> <span class="hljs-title">CalcCircle</span>(<span class="hljs-params"><span class="hljs-built_in">float</span> r</span>)</span>&#123;<br>        <span class="hljs-keyword">return</span> PI*r*r;<br>		&#125;<br>    	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestFun</span>()</span>&#123;<br>        	Console.WriteLine(<span class="hljs-string">&quot;123&quot;</span>);<br>            Console.WriteLine(PI);<br>            <span class="hljs-comment">//静态成员一定义，在程序运行时就存在。因此可以在非静态函数中使用静态成员。</span><br>    	&#125;<br>    	<span class="hljs-comment">//做对比</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>特殊情况</p>
-<p>char类型可以隐式转换成整型和浮点型、</p>
-<p>char类型隐式转换成数值类型，其对应的数字其实是一个ASCII码。</p>
-<p>string类型无法和其他类型进行隐式转换</p>
-<h4 id="总结！！！！"><a href="#总结！！！！" class="headerlink" title="总结！！！！"></a>总结！！！！</h4><p>有符号：long→int→short→sbyte</p>
-<p>无符号：ulong→uint→ushort→byte</p>
-<p>浮点数：double→float</p>
-<p><em>decimal这个类型<strong>没有办法</strong>用隐式转换的形式去存储double和float</em></p>
-<p>double→float→整数（无符号，有符号）→char</p>
-<p>decimal→整数（无符号，有符号）→char</p>
-<p>string和bool不参与隐式转换</p>
-<h2 id="二-显示转换"><a href="#二-显示转换" class="headerlink" title="二.显示转换"></a>二.显示转换</h2><h3 id="1-括号强转"><a href="#1-括号强转" class="headerlink" title="1.括号强转"></a>1.括号强转</h3><p>作用：一般情况下，将高精度的类型强制转换为低精度。</p>
-<p>语法：变量类型 变量名 &#x3D;（变量类型）变量；</p>
-<p>注意： 精度问题 范围问题</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">sbyte</span> b1=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">short</span> b2=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">long</span> ;=<span class="hljs-number">1</span>;<br><span class="hljs-built_in">char</span> c=<span class="hljs-string">&#x27;A&#x27;</span>;<br>s=i;<br><span class="hljs-comment">//会报错，因为小范围不能装大范围</span><br>s=(<span class="hljs-built_in">short</span>)i;<br><span class="hljs-comment">//不会报错，因为将i原本的int类型进行了括号强转，变成了short类型，再赋值给s。</span><br>c=i2;<br><span class="hljs-comment">//报错，字符可以隐式转换为整数（ASCII码），反之不成立。</span><br>c=(<span class="hljs-built_in">char</span>)i2;<br><span class="hljs-comment">//不报错，最终结果是将i2的ASCII码转换为字符输出，在赋值给c。</span><br></code></pre></td></tr></table></figure>
-
-<p><em>Ps</em>：<em>括号强转可能会出现范围问题造成的异常</em></p>
-<p><em>浮点数类型影响的就是精度问题</em></p>
-<p><strong><u><em>bool,string 不能够通过括号强转</em></u></strong></p>
-<h3 id="2-Parse法"><a href="#2-Parse法" class="headerlink" title="2.Parse法"></a>2.Parse法</h3><p>作用：把<strong>字符串</strong>转换为对应的类型<strong>（只限于字符串！！！）</strong></p>
-<p>语法：<strong>变量类型.Parse(“字符串”)</strong></p>
-<p>注意：字符串必须能够转换成对应类型，并且要考虑范围，否则报错。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str2=<span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-built_in">int</span> i4=<span class="hljs-built_in">int</span>.Parse(str2);<br><span class="hljs-comment">//结果是123。之间把123当成数值赋值给i4.</span><br><span class="hljs-built_in">string</span> str3=<span class="hljs-string">&quot;123.45&quot;</span>;<br>i4=<span class="hljs-built_in">int</span>.Parse(str3);<br><span class="hljs-comment">//程序报错。表示字符串str3无法转换成int类型，之后报错.</span><br></code></pre></td></tr></table></figure>
-
-<p><em>Ps：同样不能转换bool类型</em></p>
-<h3 id="3-Convert法"><a href="#3-Convert法" class="headerlink" title="3.Convert法"></a>3.Convert法</h3><p>作用：更准确的将各个类型之间进行相互转换。(精度更高)</p>
-<p>语法：Convert.To 目标类型（变量或者常量）</p>
-<p>注意：填写的变量或者常量必须正确，否则出错。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">int</span> a=Conver.ToInt32(<span class="hljs-string">&quot;12&quot;</span>);<br><span class="hljs-comment">//将字符串转换成为int32为的形式，最后赋值给a，a显示12。</span><br><span class="hljs-built_in">int</span> a=Convert.ToInt32(<span class="hljs-number">1.66</span>);<br><span class="hljs-comment">//与括号强转不同的是，它会进行四舍五入。a显示2.（括号强转a会显示1）</span><br><span class="hljs-built_in">int</span> a=Convert.ToInt32(<span class="hljs-literal">true</span>);<br><span class="hljs-comment">//对bool类型也可以进行强转转换，输出1。</span><br><span class="hljs-built_in">short</span> a=Convert.ToInt16(<span class="hljs-number">1.66</span>);<br><span class="hljs-comment">//不存在short类型，改为了Int16，要注意。</span><br><span class="hljs-built_in">ushort</span> a=Convert.ToUInt16(<span class="hljs-number">1.66</span>);<br><span class="hljs-comment">//不存在ushort类型，改为了UInt16，要注意。</span><br><span class="hljs-built_in">long</span> a=Convert.ToInt64(<span class="hljs-number">1.66</span>);<br><span class="hljs-comment">//不存在long类型，改为了Int64，要注意。</span><br><span class="hljs-built_in">float</span> f=Convert.ToSingle(<span class="hljs-string">&quot;13.2&quot;</span>);<br><span class="hljs-comment">//不存在float类型，改为ToSingle。</span><br><span class="hljs-comment">//double 和 decimal 倒是没有改变。</span><br><span class="hljs-built_in">bool</span> bo=Convert.ToBoolean(<span class="hljs-string">&quot;true&quot;</span>);<br><span class="hljs-built_in">int</span> i=Convert.ToString(<span class="hljs-number">123</span>);<br><span class="hljs-comment">//这个的功能就和下面的tostring一样了，不过多赘述。</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="4-其他类型转string"><a href="#4-其他类型转string" class="headerlink" title="4.其他类型转string"></a>4.其他类型转string</h3><p>作用：拼接打印</p>
-<p>语法：变量.toString（）；</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-built_in">string</span> str6=<span class="hljs-number">1.</span>Tostring();<br><span class="hljs-built_in">string</span> str5=<span class="hljs-number">1.2f</span>.Tostring();<br><span class="hljs-comment">//当我们进行字符串拼接时，就会自动调用tostring函数进行拼接。</span><br>Console.WriteLine(<span class="hljs-string">&quot;123123&quot;</span>+<span class="hljs-number">1</span>+<span class="hljs-literal">true</span>);<br><span class="hljs-comment">//自动运用toString函数进行拼接，之后组合到一起，打印出1231231true。</span><br></code></pre></td></tr></table></figure>
-
-<p><strong>Ps：当我们在 Console.readLine()时，系统其实会自动把你输入的变量转换成string字符串格式存储起来。</strong></p>
+<h2 id="七-静态成员对我们的作用"><a href="#七-静态成员对我们的作用" class="headerlink" title="七.静态成员对我们的作用"></a>七.静态成员对我们的作用</h2><p>静态变量：</p>
+<p>1.常用唯一变量的申明</p>
+<p>2.方便别人获取的对象的申明</p>
+<p>静态方法：</p>
+<p>常用的唯一方法的申明，比如相同规则的数学计算相关函数</p>
+<h2 id="八-常量和静态变量"><a href="#八-常量和静态变量" class="headerlink" title="八.常量和静态变量"></a>八.常量和静态变量</h2><p>const(常量)可以理解为特殊的static（静态）</p>
+<p>相同点：他们都可以通过类名点出来使用</p>
+<p>不同点：</p>
+<p>1.const必须初始化，(static可以在之后赋值)不能修改，而static没有这个规则</p>
+<p>2.const只能修饰变量，而static可以修饰很多</p>
+<p>3.const一定是写在访问修饰符后面的,而static没有这个要求</p>
 
                 
               </div>
@@ -353,8 +344,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>类型转换</div>
-      <div>https://gaster44.github.io/2023/10/21/类型转换/</div>
+      <div>面向对象之封装七</div>
+      <div>https://gaster44.github.io/2023/12/21/面向对象之封装七/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +357,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年10月21日</div>
+          <div>2023年12月21日</div>
         </div>
       
       
@@ -398,9 +389,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/21/mysql-day01/" title="mysql day01">
+                      <a href="/2023/12/21/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="静态变量之单例模式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">mysql day01</span>
+                        <span class="hidden-mobile">静态变量之单例模式</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -408,8 +399,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/10/19/SQL%E8%AF%AD%E6%B3%95%E7%9B%B8%E5%85%B3/" title="SQL语法相关">
-                        <span class="hidden-mobile">SQL语法相关</span>
+                      <a href="/2023/12/20/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%85%AD/" title="面向对象之封装六">
+                        <span class="hidden-mobile">面向对象之封装六</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
