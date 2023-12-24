@@ -16,21 +16,21 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="单例模式我们从一个例题入手 请用静态成员相关知识实现 一个类对象，在整个应用程序的生命周期中，有且仅有一个该对象的存在，不能在外部实例化，直接通过该类类名就能够得到唯一的对象 1234567891011121314151617181920namespace 语法知识&amp;#123;    class Test&amp;#123;        private static Test t&#x3D;new Test();">
+    <meta name="description" content="运算符重载一.基本概念概念：让自定义类和结构体能够使用运算符 使用关键字：operator 特点： 1.一定是一个公共的静态方法 2.返回值写在operator前面 3.逻辑处理自定义 作用： 让自定义类和结构体对象可以进行运算 注意： 1.条件运算符需要成对实现 2.一个符号可以多个重载 3.不能使用ref和out 二.基本语法public static 返回类型 operator 运算符(参数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="静态变量之单例模式">
-<meta property="og:url" content="https://gaster44.github.io/2023/12/21/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="面向对象之封装十">
+<meta property="og:url" content="https://gaster44.github.io/2023/12/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%8D%81/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="单例模式我们从一个例题入手 请用静态成员相关知识实现 一个类对象，在整个应用程序的生命周期中，有且仅有一个该对象的存在，不能在外部实例化，直接通过该类类名就能够得到唯一的对象 1234567891011121314151617181920namespace 语法知识&amp;#123;    class Test&amp;#123;        private static Test t&#x3D;new Test();">
+<meta property="og:description" content="运算符重载一.基本概念概念：让自定义类和结构体能够使用运算符 使用关键字：operator 特点： 1.一定是一个公共的静态方法 2.返回值写在operator前面 3.逻辑处理自定义 作用： 让自定义类和结构体对象可以进行运算 注意： 1.条件运算符需要成对实现 2.一个符号可以多个重载 3.不能使用ref和out 二.基本语法public static 返回类型 operator 运算符(参数">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-21T15:58:57.000Z">
-<meta property="article:modified_time" content="2023-12-21T16:09:47.051Z">
+<meta property="article:published_time" content="2023-12-24T02:14:31.000Z">
+<meta property="article:modified_time" content="2023-12-24T03:37:41.963Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>静态变量之单例模式 - Gaster44&#39;s blog</title>
+  <title>面向对象之封装十 - Gaster44&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="静态变量之单例模式"></span>
+            <span id="subtitle" data-typed-text="面向对象之封装十"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-21 23:58" pubdate>
-          2023年12月21日 晚上
+        <time datetime="2023-12-24 10:14" pubdate>
+          2023年12月24日 上午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          719 字
+          981 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          6 分钟
+          9 分钟
         
       </span>
     
@@ -267,27 +267,44 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">静态变量之单例模式</h1>
+            <h1 id="seo-header">面向对象之封装十</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>我们从一个例题入手</p>
-<p><strong>请用静态成员相关知识实现</strong></p>
-<p><strong>一个类对象，在整个应用程序的生命周期中，有且仅有一个该对象的存在，不能在外部实例化，直接通过该类类名就能够得到唯一的对象</strong></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>&#123;<br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Test t=<span class="hljs-keyword">new</span> Test();<br>        <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> testInt =<span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Test T<br>        &#123;<br>            <span class="hljs-keyword">get</span>&#123;<br>                <span class="hljs-keyword">return</span> t;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Test</span>()</span>;<br>    &#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Console.WriteLine(Test.T.testInt);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="运算符重载"><a href="#运算符重载" class="headerlink" title="运算符重载"></a>运算符重载</h1><h2 id="一-基本概念"><a href="#一-基本概念" class="headerlink" title="一.基本概念"></a>一.基本概念</h2><p>概念：让自定义类和结构体能够使用运算符</p>
+<p>使用关键字：<strong>operator</strong></p>
+<p><strong>特点：</strong></p>
+<p>1.一定是一个公共的静态方法</p>
+<p>2.返回值写在operator前面</p>
+<p>3.逻辑处理自定义</p>
+<p><strong>作用：</strong></p>
+<p>让自定义类和结构体对象可以进行运算</p>
+<p><strong>注意：</strong></p>
+<p>1.条件运算符需要成对实现</p>
+<p>2.一个符号可以多个重载</p>
+<p>3.不能使用ref和out</p>
+<h2 id="二-基本语法"><a href="#二-基本语法" class="headerlink" title="二.基本语法"></a>二.基本语法</h2><p>public static 返回类型 operator 运算符(参数列表){   }</p>
+<p>注意：参数类型至少有一个是和类的类型是一样的。</p>
+<h2 id="三-实例与使用"><a href="#三-实例与使用" class="headerlink" title="三.实例与使用"></a>三.实例与使用</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span><br>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> x;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> y;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Point <span class="hljs-keyword">operator</span> +(Point p1,Point p2)&#123;<br>        Point p=<span class="hljs-keyword">new</span> Point();<br>        p.x=p1.x+p2.x;<br>        p.y=p1.y+p2.y;<br>        <span class="hljs-keyword">return</span> p;<br>	&#125;<br>    <span class="hljs-comment">//接下来对运算符加号再进行重载</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Point <span class="hljs-keyword">operator</span> +(Point p1,<span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span>)&#123;<br>        Point p=<span class="hljs-keyword">new</span> Point();<br>        p.x=p1.x+<span class="hljs-keyword">value</span>;<br>        p.y=p1.y+<span class="hljs-keyword">value</span>;<br>        <span class="hljs-keyword">return</span> p;<br>	&#125;<br>&#125;<br><span class="hljs-comment">//以下是主函数模块</span><br>Point p=<span class="hljs-keyword">new</span> Point();<br>p.x=<span class="hljs-number">1</span>;<br>p.y=<span class="hljs-number">1</span>;<br>Point p2=<span class="hljs-keyword">new</span> Point();<br>p.x=<span class="hljs-number">2</span>;<br>p.y=<span class="hljs-number">2</span>;<br>Point p3=p+p2;<br><span class="hljs-comment">//相当于为加号新加了一个成员方法（即重载了一个函数），这个成员方法可以把两个自定义类相加。</span><br>Point p4=p3+<span class="hljs-number">2</span>;<br><span class="hljs-comment">//相当于p3的横坐标加上了2. </span><br></code></pre></td></tr></table></figure>
 
-<p>这个程序非常有意思，这个就是单例模式的一个比较简单的形式了。</p>
-<p>我们先定义一个私有的构造无参函数，让它能够做到不能在外部实例化；接着，我们在类里面定义一个静态成员t，这个静态成员就是一个Test类了，并且是唯一的。</p>
-<p>注意！！此时虽然t不能在外部被赋值了</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Test.t=<span class="hljs-keyword">new</span> Test();<br><span class="hljs-comment">//报错，私有不能实例化</span><br></code></pre></td></tr></table></figure>
-
-<p>但是，还是可以被赋值为空的！！！！</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Test.t=<span class="hljs-literal">null</span>;<br><span class="hljs-comment">//不会报错，并且这个时候t就丢失了</span><br></code></pre></td></tr></table></figure>
-
-<p>因此，我们还需要做到能够得到却不能被改变，因此可以想到成员属性的用法（get）</p>
-<p>我们通过成员属性，对t实现了保护，之后，只要通过属性，就可以实现Test.T呼出一个唯一的静态成员类t了。此时Test.T.testInt&#x3D;10.</p>
-<p>这个可以好好看看，真的很有意思！</p>
+<h2 id="四-可重载和不可重载运算符"><a href="#四-可重载和不可重载运算符" class="headerlink" title="四.可重载和不可重载运算符"></a>四.可重载和不可重载运算符</h2><h3 id="可重载"><a href="#可重载" class="headerlink" title="可重载"></a>可重载</h3><p><strong>算数运算符</strong></p>
+<p>+ - * &#x2F; % ++ –</p>
+<p>（注意符号需要的是两个参数还是一个参数）</p>
+<p><strong>逻辑运算符</strong></p>
+<p>!(逻辑非)</p>
+<p><strong>位运算符</strong></p>
+<p>^ ~ &lt;&lt; &gt;&gt; | &amp;</p>
+<p><strong>条件运算符</strong></p>
+<p>1.返回值一般是bool值，也可以是其他的</p>
+<p>2.相关符号必须配对实现</p>
+<p><em>(重载了大于，一定要重载小于，一定要配对)</em></p>
+<p>&gt; &lt; &gt;&#x3D; &lt;&#x3D; &#x3D;&#x3D; !&#x3D;</p>
+<h3 id="不可重载"><a href="#不可重载" class="headerlink" title="不可重载"></a>不可重载</h3><p>逻辑与（&amp;&amp;）</p>
+<p>逻辑或（||）</p>
+<p>索引符（[]）</p>
+<p>强转运算符（（））</p>
+<p>特殊运算符：点（.）,三目运算符(? : )赋值符号（&#x3D;）</p>
 
                 
               </div>
@@ -326,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>静态变量之单例模式</div>
-      <div>https://gaster44.github.io/2023/12/21/静态变量之单例模式/</div>
+      <div>面向对象之封装十</div>
+      <div>https://gaster44.github.io/2023/12/24/面向对象之封装十/</div>
     </div>
     <div class="license-meta">
       
@@ -339,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月21日</div>
+          <div>2023年12月24日</div>
         </div>
       
       
@@ -371,9 +388,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/22/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%85%AB/" title="面向对象之封装八">
+                      <a href="/2023/12/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%8D%81%E4%B8%80/" title="面向对象之封装十一">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">面向对象之封装八</span>
+                        <span class="hidden-mobile">面向对象之封装十一</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -381,8 +398,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E4%B8%83/" title="面向对象之封装七">
-                        <span class="hidden-mobile">面向对象之封装七</span>
+                      <a href="/2023/12/23/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E4%B9%9D/" title="面向对象之封装九">
+                        <span class="hidden-mobile">面向对象之封装九</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

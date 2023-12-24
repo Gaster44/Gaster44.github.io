@@ -16,21 +16,21 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="单例模式我们从一个例题入手 请用静态成员相关知识实现 一个类对象，在整个应用程序的生命周期中，有且仅有一个该对象的存在，不能在外部实例化，直接通过该类类名就能够得到唯一的对象 1234567891011121314151617181920namespace 语法知识&amp;#123;    class Test&amp;#123;        private static Test t&#x3D;new Test();">
+    <meta name="description" content="拓展方法一.拓展方法基本概念概念：为现有非静态变量类型添加新方法 作用： 1.提升程序拓展性 2.不需要在对象中重新写方法 3.不需要继承来添加方法 4.为别人封装的类型写额外的方法 特点： 1.一定是写在静态类中 2.一定是个静态函数 3.第一个参数为拓展目标 4.第一个参数用this修饰 二.基本语法访问修饰符 static 返回值 函数名（this 拓展类名 参数名，参数类型 参数名，参数类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="静态变量之单例模式">
-<meta property="og:url" content="https://gaster44.github.io/2023/12/21/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B9%8B%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="面向对象之封装九">
+<meta property="og:url" content="https://gaster44.github.io/2023/12/23/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E4%B9%9D/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="单例模式我们从一个例题入手 请用静态成员相关知识实现 一个类对象，在整个应用程序的生命周期中，有且仅有一个该对象的存在，不能在外部实例化，直接通过该类类名就能够得到唯一的对象 1234567891011121314151617181920namespace 语法知识&amp;#123;    class Test&amp;#123;        private static Test t&#x3D;new Test();">
+<meta property="og:description" content="拓展方法一.拓展方法基本概念概念：为现有非静态变量类型添加新方法 作用： 1.提升程序拓展性 2.不需要在对象中重新写方法 3.不需要继承来添加方法 4.为别人封装的类型写额外的方法 特点： 1.一定是写在静态类中 2.一定是个静态函数 3.第一个参数为拓展目标 4.第一个参数用this修饰 二.基本语法访问修饰符 static 返回值 函数名（this 拓展类名 参数名，参数类型 参数名，参数类">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-21T15:58:57.000Z">
-<meta property="article:modified_time" content="2023-12-21T16:09:47.051Z">
+<meta property="article:published_time" content="2023-12-22T16:16:14.000Z">
+<meta property="article:modified_time" content="2023-12-22T16:40:25.001Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>静态变量之单例模式 - Gaster44&#39;s blog</title>
+  <title>面向对象之封装九 - Gaster44&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="静态变量之单例模式"></span>
+            <span id="subtitle" data-typed-text="面向对象之封装九"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-21 23:58" pubdate>
-          2023年12月21日 晚上
+        <time datetime="2023-12-23 00:16" pubdate>
+          2023年12月23日 凌晨
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          719 字
+          1.6k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          6 分钟
+          14 分钟
         
       </span>
     
@@ -267,27 +267,31 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">静态变量之单例模式</h1>
+            <h1 id="seo-header">面向对象之封装九</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>我们从一个例题入手</p>
-<p><strong>请用静态成员相关知识实现</strong></p>
-<p><strong>一个类对象，在整个应用程序的生命周期中，有且仅有一个该对象的存在，不能在外部实例化，直接通过该类类名就能够得到唯一的对象</strong></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>&#123;<br>        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Test t=<span class="hljs-keyword">new</span> Test();<br>        <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> testInt =<span class="hljs-number">10</span>;<br>        <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Test T<br>        &#123;<br>            <span class="hljs-keyword">get</span>&#123;<br>                <span class="hljs-keyword">return</span> t;<br>            &#125;<br>        &#125;<br>        <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Test</span>()</span>;<br>    &#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Console.WriteLine(Test.T.testInt);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="拓展方法"><a href="#拓展方法" class="headerlink" title="拓展方法"></a>拓展方法</h1><h2 id="一-拓展方法基本概念"><a href="#一-拓展方法基本概念" class="headerlink" title="一.拓展方法基本概念"></a>一.拓展方法基本概念</h2><p><strong>概念：</strong>为现有非静态变量类型添加新方法</p>
+<p><strong>作用：</strong></p>
+<p>1.提升程序拓展性</p>
+<p>2.不需要在对象中重新写方法</p>
+<p>3.不需要继承来添加方法</p>
+<p>4.为别人封装的类型写额外的方法</p>
+<p><strong>特点：</strong></p>
+<p>1.一定是写在静态类中</p>
+<p>2.一定是个静态函数</p>
+<p>3.第一个参数为拓展目标</p>
+<p>4.第一个参数用this修饰</p>
+<h2 id="二-基本语法"><a href="#二-基本语法" class="headerlink" title="二.基本语法"></a>二.基本语法</h2><p>访问修饰符 static 返回值 函数名（this 拓展类名 参数名，参数类型 参数名，参数类型 参数名……)</p>
+<h2 id="三-实例"><a href="#三-实例" class="headerlink" title="三.实例"></a>三.实例</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Tools</span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SpeakValue</span>(<span class="hljs-params"><span class="hljs-keyword">this</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span></span>)</span><br><span class="hljs-function">        <span class="hljs-comment">//为int类型拓展一个成员方法</span></span><br><span class="hljs-function">        <span class="hljs-comment">//而成员方法是需要实例化对象后才能使用的</span></span><br><span class="hljs-function">        <span class="hljs-comment">//value就代表使用该方法的实例化对象</span></span><br>    &#123;<br>        <span class="hljs-comment">//拓展的方法的逻辑</span><br>        Console.WriteLine(<span class="hljs-string">&quot;为int类型拓展的方法&quot;</span>+<span class="hljs-keyword">value</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>这个程序非常有意思，这个就是单例模式的一个比较简单的形式了。</p>
-<p>我们先定义一个私有的构造无参函数，让它能够做到不能在外部实例化；接着，我们在类里面定义一个静态成员t，这个静态成员就是一个Test类了，并且是唯一的。</p>
-<p>注意！！此时虽然t不能在外部被赋值了</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Test.t=<span class="hljs-keyword">new</span> Test();<br><span class="hljs-comment">//报错，私有不能实例化</span><br></code></pre></td></tr></table></figure>
 
-<p>但是，还是可以被赋值为空的！！！！</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c#">Test.t=<span class="hljs-literal">null</span>;<br><span class="hljs-comment">//不会报错，并且这个时候t就丢失了</span><br></code></pre></td></tr></table></figure>
 
-<p>因此，我们还需要做到能够得到却不能被改变，因此可以想到成员属性的用法（get）</p>
-<p>我们通过成员属性，对t实现了保护，之后，只要通过属性，就可以实现Test.T呼出一个唯一的静态成员类t了。此时Test.T.testInt&#x3D;10.</p>
-<p>这个可以好好看看，真的很有意思！</p>
+<h2 id="四-使用"><a href="#四-使用" class="headerlink" title="四.使用"></a>四.使用</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Tools</span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SpeakValue</span>(<span class="hljs-params"><span class="hljs-keyword">this</span> <span class="hljs-built_in">int</span> <span class="hljs-keyword">value</span></span>)</span><br><span class="hljs-function">        <span class="hljs-comment">//为int类型拓展一个成员方法</span></span><br><span class="hljs-function">        <span class="hljs-comment">//而成员方法是需要实例化对象后才能使用的</span></span><br><span class="hljs-function">        <span class="hljs-comment">//value就代表使用该方法的实例化对象</span></span><br>    &#123;<br>        <span class="hljs-comment">//拓展的方法的逻辑</span><br>        Console.WriteLine(<span class="hljs-string">&quot;为int类型拓展的方法&quot;</span>+<span class="hljs-keyword">value</span>);<br>    &#125;<br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SpeakStringInfo</span>(<span class="hljs-params"><span class="hljs-keyword">this</span> <span class="hljs-built_in">string</span> str,<span class="hljs-built_in">string</span> str2,<span class="hljs-built_in">string</span> str3</span>)</span>&#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;为string类型拓展的方法&quot;</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;调用方法的对象&quot;</span>+str);<br>            Console.WriteLine(<span class="hljs-string">&quot;传的参数为&quot;</span>+str2+str3);<br>        &#125;<br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            <span class="hljs-built_in">int</span> i =<span class="hljs-number">10</span>;<br>            i.SpeakValue();<br>            <span class="hljs-comment">//可以点出来使用了，它不需要参数（为什么？？）</span><br>            <span class="hljs-comment">//因为我们this后面跟着的是拓展类名（代表为谁拓展这一个方法）和参数名（这个参数名代表的就是我实例化的对象是谁，在这个例子中所指的正是i，（也是value），相当于实例化对象i调用了这个拓展方法。</span><br>            <span class="hljs-built_in">string</span> str=<span class="hljs-string">&quot;000&quot;</span>;<br>            str.SpeakStringInfo(<span class="hljs-string">&quot;111&quot;</span>,<span class="hljs-string">&quot;222&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>说白了，拓展方法就是为那些无法修改的静态类新增加一些成员方法，这样即不用动大手术，又可以起到作用，相当于“打补丁”了。</p>
+<h2 id="五-为自定义的类型拓展方法"><a href="#五-为自定义的类型拓展方法" class="headerlink" title="五.为自定义的类型拓展方法"></a>五.为自定义的类型拓展方法</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Tools</span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fun3</span>(<span class="hljs-params"><span class="hljs-keyword">this</span> Test t</span>)</span>&#123;<br>        Console.WriteLine(<span class="hljs-string">&quot;为Test拓展的方法&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title">Test</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> i=<span class="hljs-number">10</span>;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fun1</span>()</span>&#123;<br>        Console.WriteLine(<span class="hljs-string">&quot;123&quot;</span>);<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Fun2</span>()</span>&#123;<br>        Console.WriteLine(<span class="hljs-string">&quot;456&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-comment">//主函数中</span><br>Test t= <span class="hljs-keyword">new</span> Test();<br>t.Fun3();<br><span class="hljs-comment">//如果重名了怎么办？——拓展方法和成员方法重名，会使用成员方法，拓展方法作废。</span><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -326,8 +330,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>静态变量之单例模式</div>
-      <div>https://gaster44.github.io/2023/12/21/静态变量之单例模式/</div>
+      <div>面向对象之封装九</div>
+      <div>https://gaster44.github.io/2023/12/23/面向对象之封装九/</div>
     </div>
     <div class="license-meta">
       
@@ -339,7 +343,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月21日</div>
+          <div>2023年12月23日</div>
         </div>
       
       
@@ -371,9 +375,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/22/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%85%AB/" title="面向对象之封装八">
+                      <a href="/2023/12/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%8D%81/" title="面向对象之封装十">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">面向对象之封装八</span>
+                        <span class="hidden-mobile">面向对象之封装十</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -381,8 +385,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E4%B8%83/" title="面向对象之封装七">
-                        <span class="hidden-mobile">面向对象之封装七</span>
+                      <a href="/2023/12/22/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%85%AB/" title="面向对象之封装八">
+                        <span class="hidden-mobile">面向对象之封装八</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
