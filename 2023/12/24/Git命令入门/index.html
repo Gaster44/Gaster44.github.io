@@ -16,21 +16,21 @@
   <meta name="author" content="huangjinhong">
   <meta name="keywords" content="">
   
-    <meta name="description" content="内部类和分布类（了解即可）一.内部类概念：在一个类中再申明一个类 特点：使用时要用包裹者点出自己 作用：亲密关系的变现 注意：访问修饰符的作用很大 12345678910111213141516class Person&amp;#123;    public int age;    public string name;    public Body body;    public class Body&amp;">
+    <meta name="description" content="关于Git命令的一些小汇总初始化设置1234git config --global user.name&quot;Your Name&quot;   配置用户名git config --global user.email&quot;mail@example.com&quot;  配置邮箱git config --global credential store  存储配置git config --g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面向对象之封装十一">
-<meta property="og:url" content="https://gaster44.github.io/2023/12/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%8D%81%E4%B8%80/index.html">
+<meta property="og:title" content="Git命令入门">
+<meta property="og:url" content="https://gaster44.github.io/2023/12/24/Git%E5%91%BD%E4%BB%A4%E5%85%A5%E9%97%A8/index.html">
 <meta property="og:site_name" content="Gaster44&#39;s blog">
-<meta property="og:description" content="内部类和分布类（了解即可）一.内部类概念：在一个类中再申明一个类 特点：使用时要用包裹者点出自己 作用：亲密关系的变现 注意：访问修饰符的作用很大 12345678910111213141516class Person&amp;#123;    public int age;    public string name;    public Body body;    public class Body&amp;">
+<meta property="og:description" content="关于Git命令的一些小汇总初始化设置1234git config --global user.name&quot;Your Name&quot;   配置用户名git config --global user.email&quot;mail@example.com&quot;  配置邮箱git config --global credential store  存储配置git config --g">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-24T03:38:20.000Z">
-<meta property="article:modified_time" content="2023-12-24T03:53:40.612Z">
+<meta property="article:published_time" content="2023-12-24T08:33:11.000Z">
+<meta property="article:modified_time" content="2023-12-24T11:53:12.172Z">
 <meta property="article:author" content="huangjinhong">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>面向对象之封装十一 - Gaster44&#39;s blog</title>
+  <title>Git命令入门 - Gaster44&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="面向对象之封装十一"></span>
+            <span id="subtitle" data-typed-text="Git命令入门"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-24 11:38" pubdate>
-          2023年12月24日 中午
+        <time datetime="2023-12-24 16:33" pubdate>
+          2023年12月24日 下午
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          748 字
+          2k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          7 分钟
+          17 分钟
         
       </span>
     
@@ -267,37 +267,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">面向对象之封装十一</h1>
+            <h1 id="seo-header">Git命令入门</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="内部类和分布类（了解即可）"><a href="#内部类和分布类（了解即可）" class="headerlink" title="内部类和分布类（了解即可）"></a>内部类和分布类（了解即可）</h1><h2 id="一-内部类"><a href="#一-内部类" class="headerlink" title="一.内部类"></a>一.内部类</h2><p><strong>概念：</strong>在一个类中再申明一个类</p>
-<p><strong>特点：</strong>使用时要用包裹者点出自己</p>
-<p><strong>作用：</strong>亲密关系的变现</p>
-<p><strong>注意：</strong>访问修饰符的作用很大</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> age;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>    <span class="hljs-keyword">public</span> Body body;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Body</span>&#123;<br>        Arm leftArm;<br>        Arm rightArm;<br>        <span class="hljs-keyword">class</span> <span class="hljs-title">Arm</span>&#123;<br>            <br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//以下是主函数模块</span><br>Person p =<span class="hljs-keyword">new</span> Person();<br>Person.Body body=<span class="hljs-keyword">new</span> Person.Body();<br><span class="hljs-comment">//这里点不出Arm，因为默认是私有的（private），改成public就行了。</span><br></code></pre></td></tr></table></figure>
+                <h1 id="关于Git命令的一些小汇总"><a href="#关于Git命令的一些小汇总" class="headerlink" title="关于Git命令的一些小汇总"></a>关于Git命令的一些小汇总</h1><h2 id="初始化设置"><a href="#初始化设置" class="headerlink" title="初始化设置"></a>初始化设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global user.name<span class="hljs-string">&quot;Your Name&quot;</span>   配置用户名<br>git config --global user.email<span class="hljs-string">&quot;mail@example.com&quot;</span>  配置邮箱<br>git config --global credential store  存储配置<br>git config --global --list  查看用户配置信息<br></code></pre></td></tr></table></figure>
 
-<h2 id="二-分布类"><a href="#二-分布类" class="headerlink" title="二.分布类"></a>二.分布类</h2><p><strong>概念</strong>：把一个类分成几部分申明</p>
-<p>关键字：<strong>partial</strong></p>
-<p><strong>作用：</strong></p>
-<p>分部描述一个类</p>
-<p>增加程序的拓展性</p>
-<p><strong>注意：</strong></p>
-<p>分部类可以写在<strong>多个脚本文件中</strong></p>
-<p>分部类的访问修饰符要一致</p>
-<p>分部类中不能有重复成员</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Student</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">bool</span> sex;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>&#125;<br><span class="hljs-keyword">partial</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Student</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> number;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Speak</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> str</span>)</span>&#123;<br>        Console.WriteLine(<span class="hljs-string">&quot;&#123;0&#125;&quot;</span>,str);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>注:</strong></p>
+<p>省略参数（Local）：表示本地配置，只对本地仓库有效</p>
+<p>global：全局配置，所有仓库生效</p>
+<p>system：系统配置，对所有用户生效</p>
+<h2 id="新建版本库（仓库）"><a href="#新建版本库（仓库）" class="headerlink" title="新建版本库（仓库）"></a>新建版本库（仓库）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">git init &lt;project-name&gt;<br>创建一个新的本地仓库（省略project-name则在当前目录创建）<br>git <span class="hljs-built_in">clone</span>&lt;url&gt;<br>克隆一个远程仓库<br></code></pre></td></tr></table></figure>
 
-<p><em>这个重点在于分部类可以写在多个脚本文件中，等到后面会继续涉及。</em></p>
-<h2 id="三-分部方法"><a href="#三-分部方法" class="headerlink" title="三.分部方法"></a>三.分部方法</h2><p>概念：</p>
-<p>将方法的申明和实现分离</p>
-<p>特点：</p>
-<p>1.不能加访问修饰符 默认私有</p>
-<p>2.只能再分部类中申明</p>
-<p>3.返回值只能是void</p>
-<p>4.可以有参数但是不用，out关键字</p>
-<p><strong>局限很大，了解即可</strong></p>
+<h2 id="Git的工作区域和工作状态"><a href="#Git的工作区域和工作状态" class="headerlink" title="Git的工作区域和工作状态"></a>Git的工作区域和工作状态</h2><h3 id="四个区域"><a href="#四个区域" class="headerlink" title="四个区域"></a>四个区域</h3><p><strong>工作区（Working Directory)</strong></p>
+<p>就是你在电脑里能实际看到的目录</p>
+<p><strong>暂存区(Stage&#x2F;Index)</strong></p>
+<p>暂存区也叫索引，用来临时存放未提交的内容，一般在.git目录下的index中</p>
+<p><strong>本地仓库（Repository)</strong></p>
+<p>Git在本地的版本库，仓库信息存储在.git这个隐藏目录中。</p>
+<p><strong>远程仓库(Remote Repository)</strong></p>
+<p>托管在远程服务器上的仓库。常用的有GitHub、GitLab、Gitee.</p>
+<h3 id="工作状态"><a href="#工作状态" class="headerlink" title="工作状态"></a>工作状态</h3><p><strong>已修改（Modified）</strong></p>
+<p>修改了但是没有保存到暂存区的文件</p>
+<p><strong>已暂存（Staged）</strong></p>
+<p>修改后已经保存到暂存区的文件</p>
+<p><strong>已提交（Committed）</strong></p>
+<p>把暂存区的文件提交到本地仓库后的状态</p>
+<h3 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h3><p><strong>main&#x2F;master</strong>      默认主分支</p>
+<p>**Origin	**默认远程仓库</p>
+<p><strong>HEAD</strong>	指向当前分支的指针</p>
+<p><strong>HEAD^</strong>	上一个版本</p>
+<p><strong>HEAD~</strong>	上四个版本</p>
+<h3 id="特殊文件"><a href="#特殊文件" class="headerlink" title="特殊文件"></a>特殊文件</h3><p>.git	Git仓库的元数据和对象数据库</p>
+<p>.gitignore	忽略文件,不需要提交到仓库的文件</p>
+<p>.gitattributes	指向当前分支的指针</p>
+<p>.gitkeep	使空目录被提交到仓库</p>
+<p>.gitmodules	记录子模块的信息</p>
+<p>.gitconfig	记录仓库的配置信息</p>
+<h2 id="添加和提交文件"><a href="#添加和提交文件" class="headerlink" title="添加和提交文件"></a>添加和提交文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ git status  <span class="hljs-comment">#查看仓库当前状态</span><br>On branch master<br><br>No commits yet<br><br>nothing to commit (create/copy files and use <span class="hljs-string">&quot;git add&quot;</span> to track)<br><span class="hljs-comment">#空仓库会显示上面的状况</span><br><span class="hljs-comment">#之后,可以用Linux或者Vscode创建一个文件,这里用Linux</span><br>$ <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;ss&quot;</span> &gt;file1.txt<br><span class="hljs-comment">#此时再次查看状态,会发现变化</span><br>On branch master<br><br>No commits yet<br><br>Untracked files:<br>  (use <span class="hljs-string">&quot;git add &lt;file&gt;...&quot;</span> to include <span class="hljs-keyword">in</span> what will be committed)<br>        file1.txt<br><br>nothing added to commit but untracked files present (use <span class="hljs-string">&quot;git add&quot;</span> to track)<br><span class="hljs-comment">#之后使用添加命令,将文件放到暂存区中</span><br>$ git add file1.txt<br>On branch master<br><br>No commits yet<br><br>Changes to be committed:<br>  (use <span class="hljs-string">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage)<br>        new file:   file1.txt<br><span class="hljs-comment">#会发现,文件的状态再次被改变,表示该文件已经被添加到了暂存区域中</span><br><span class="hljs-comment">#在括号中的那一栏表示取消缓存</span><br><span class="hljs-comment">#之后,尝试将文件提交到仓库之中</span><br>$ git commit -m <span class="hljs-string">&quot;ss&quot;</span><br>[master (root-commit) e3c2751] ss<br> 1 file changed, 1 insertion(+)<br> create mode 100644 file1.txt<br><span class="hljs-comment">#显示以上信息,此时再来查看仓库的状态</span><br>$ git status<br>On branch master<br>nothing to commit, working tree clean<br><span class="hljs-comment">#file已经不见了,已经到仓库里面了</span><br><span class="hljs-comment">#之后可以使用git log 查看仓库提交信息</span><br>$ git <span class="hljs-built_in">log</span><br>commit e3c2751597d4b423fa23c338814725974282b6c8 (HEAD -&gt; master)<br>Author: huangjinhong &lt;3392591652@qq.com&gt;<br>Date:   Sun Dec 24 19:38:00 2023 +0800<br><br>    ss<br><span class="hljs-comment">#log后面可以加一些东西,来查看简洁的提交记录</span><br>$ git <span class="hljs-built_in">log</span> --oneline<br>e3c2751 (HEAD -&gt; master) ss<br><br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -316,7 +325,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Csharp/" class="category-chain-item">Csharp</a>
+  <a href="/categories/Git/" class="category-chain-item">Git</a>
   
   
 
@@ -336,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>面向对象之封装十一</div>
-      <div>https://gaster44.github.io/2023/12/24/面向对象之封装十一/</div>
+      <div>Git命令入门</div>
+      <div>https://gaster44.github.io/2023/12/24/Git命令入门/</div>
     </div>
     <div class="license-meta">
       
@@ -381,18 +390,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/24/Git%E5%91%BD%E4%BB%A4%E5%85%A5%E9%97%A8/" title="Git命令入门">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git命令入门</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%8D%81/" title="面向对象之封装十">
-                        <span class="hidden-mobile">面向对象之封装十</span>
+                      <a href="/2023/12/24/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%8D%81%E4%B8%80/" title="面向对象之封装十一">
+                        <span class="hidden-mobile">面向对象之封装十一</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
