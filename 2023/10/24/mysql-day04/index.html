@@ -1,0 +1,738 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="huangjinhong">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="列起别名给查询的列起别名？12345678910mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）+--------+------------+| deptno | deptname   |+--------+------------+|     10 | ACCOUNTING ||     20">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql day04">
+<meta property="og:url" content="https://gaster44.github.io/2023/10/24/mysql-day04/index.html">
+<meta property="og:site_name" content="Gaster44&#39;s blog">
+<meta property="og:description" content="列起别名给查询的列起别名？12345678910mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）+--------+------------+| deptno | deptname   |+--------+------------+|     10 | ACCOUNTING ||     20">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-10-24T12:07:00.000Z">
+<meta property="article:modified_time" content="2023-11-06T11:46:39.168Z">
+<meta property="article:author" content="huangjinhong">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>mysql day04 - Gaster44&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gaster44.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="mysql day04"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-24 20:07" pubdate>
+          2023年10月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">mysql day04</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="列起别名"><a href="#列起别名" class="headerlink" title="列起别名"></a>列起别名</h1><h3 id="给查询的列起别名？"><a href="#给查询的列起别名？" class="headerlink" title="给查询的列起别名？"></a>给查询的列起别名？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt;select deptno,dname as deptname from dept;（对deptno只查询，对dname才起别名）<br>+--------+------------+<br>| deptno | deptname   |<br>+--------+------------+<br>|     10 | ACCOUNTING |<br>|     20 | RESEARCH   |<br>|     30 | SALES      |<br>|     40 | OPERATIONS |<br>+--------+------------+<br>4 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure>
+
+<p>使用as关键字起别名，as为alias(别名)的缩写。<em>as可以用空格代替。</em></p>
+<p><em>注意：只是将显示的查询结果列名显示为deptname，原表列名不变</em></p>
+<p><em>记住：select语句永远都不会进行修改操作，因为它的功能只负责查询。</em></p>
+<h3 id="假设起别名的时候，别名里面有空格怎么办？"><a href="#假设起别名的时候，别名里面有空格怎么办？" class="headerlink" title="假设起别名的时候，别名里面有空格怎么办？"></a>假设起别名的时候，别名里面有空格怎么办？</h3><p><strong>mysql &gt;select deptno,dname  dept name from dept;</strong></p>
+<p>DBMS看到这样的语句，进行SQL语句的编译的时候，不符合语法，编译错误。</p>
+<p>怎么解决？</p>
+<p><strong>加引号</strong></p>
+<p> <strong>mysql &gt;select deptno,dname  “dept name” from dept;</strong></p>
+<p><em>注意：在所有的数据库中，字符串统一使用单引号括起来，单引号是标准，双引号在oracle数据库中用不了，但是在mysql中可以使用。</em></p>
+<p><em>Ps：使用中文命名时要使用单引号括起来。</em></p>
+<h1 id="列参与数学运算"><a href="#列参与数学运算" class="headerlink" title="列参与数学运算"></a>列参与数学运算</h1><h3 id="计算员工年薪？"><a href="#计算员工年薪？" class="headerlink" title="计算员工年薪？"></a>计算员工年薪？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql &gt; select ename,sal from emp;<br>+--------+---------+<br>| ename  | sal     |<br>+--------+---------+<br>| SMITH  |  800.00 |<br>| ALLEN  | 1600.00 |<br>| WARD   | 1250.00 |<br>| JONES  | 2975.00 |<br>| MARTIN | 1250.00 |<br>| BLAKE  | 2850.00 |<br>| CLARK  | 2450.00 |<br>| SCOTT  | 3000.00 |<br>| KING   | 5000.00 |<br>| TURNER | 1500.00 |<br>| ADAMS  | 1100.00 |<br>| JAMES  |  950.00 |<br>| FORD   | 3000.00 |<br>| MILLER | 1300.00 |<br>+--------+---------+<br>14 rows in set (0.001 sec)<br>//先查看员工薪资。<br> mysql &gt;select ename,sal*12 from emp;<br>+--------+----------+<br>| ename  | sal*12   |<br>+--------+----------+<br>| SMITH  |  9600.00 |<br>| ALLEN  | 19200.00 |<br>| WARD   | 15000.00 |<br>| JONES  | 35700.00 |<br>| MARTIN | 15000.00 |<br>| BLAKE  | 34200.00 |<br>| CLARK  | 29400.00 |<br>| SCOTT  | 36000.00 |<br>| KING   | 60000.00 |<br>| TURNER | 18000.00 |<br>| ADAMS  | 13200.00 |<br>| JAMES  | 11400.00 |<br>| FORD   | 36000.00 |<br>| MILLER | 15600.00 |<br>+--------+----------+<br>14 rows in set (0.001 sec)<br></code></pre></td></tr></table></figure>
+
+<p><strong>结论：字段可以使用数字表达式</strong></p>
+<h1 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h1><h2 id="什么是条件查询？"><a href="#什么是条件查询？" class="headerlink" title="什么是条件查询？"></a>什么是条件查询？</h2><p>不是将表中的所有数据都查出来，是查询出来符合条件的。</p>
+<p><strong>语法格式：</strong></p>
+<p><strong>select</strong> ….字段1，字段2，字段3…<strong>from</strong> 表名 <strong>where</strong> 条件;</p>
+<p>条件查询需要用到where语句，where必须放到from语句表的后面。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x3D;</td>
+<td align="left">等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;或者！&#x3D;</td>
+<td align="left">不等于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td align="left">小于</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td align="left">小于等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td align="left">大于</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td align="left">大于等于</td>
+</tr>
+<tr>
+<td>between…and…</td>
+<td align="left">两个值之间，等同于&gt;&#x3D; and &lt;&#x3D;<em>（左小右大）（闭区间）</em></td>
+</tr>
+<tr>
+<td>is null</td>
+<td align="left">为null<em>（is not null 不为空)</em></td>
+</tr>
+<tr>
+<td>and</td>
+<td align="left">并且</td>
+</tr>
+<tr>
+<td>or</td>
+<td align="left">或者</td>
+</tr>
+<tr>
+<td>in</td>
+<td align="left">包含，相当于多个or<em>（not in 不在这个范围中）</em></td>
+</tr>
+<tr>
+<td>not</td>
+<td align="left">not 可以取非，主要用在is或者in中</td>
+</tr>
+<tr>
+<td>like</td>
+<td align="left">like成为模糊查询，支持%或者下划线匹配，                          %匹配任意给字符，                                                                                      下划线，一个下划线只匹配一个字符。</td>
+</tr>
+</tbody></table>
+<p>具体方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select EMPNO from emp where EMPNO&gt;7900;<br>+-------+<br>| EMPNO |<br>+-------+<br>|  7902 |<br>|  7934 |<br>+-------+<br>//查询编号大于7900的员工编号。<br>2 rows in set (0.001 sec)MariaDB [hello]&gt; select ename,empno from emp where sal&gt;790;<br>+--------+-------+<br>| ename  | empno |<br>+--------+-------+<br>| SMITH  |  7369 |<br>| ALLEN  |  7499 |<br>| WARD   |  7521 |<br>| JONES  |  7566 |<br>| MARTIN |  7654 |<br>| BLAKE  |  7698 |<br>| CLARK  |  7782 |<br>| SCOTT  |  7788 |<br>| KING   |  7839 |<br>| TURNER |  7844 |<br>| ADAMS  |  7876 |<br>| JAMES  |  7900 |<br>| FORD   |  7902 |<br>| MILLER |  7934 |<br>+--------+-------+<br>14 rows in set (0.001 sec)<br>//查询工资大于790的员工姓名和编号。<br>MariaDB [hello]&gt; select ename empno from emp where comm is null;<br>+--------+<br>| empno  |<br>+--------+<br>| SMITH  |<br>| JONES  |<br>| BLAKE  |<br>| CLARK  |<br>| SCOTT  |<br>| KING   |<br>| ADAMS  |<br>| JAMES  |<br>| FORD   |<br>| MILLER |<br>+--------+<br>//无补助员工名单<br></code></pre></td></tr></table></figure>
+
+<p>注意：在数据库中null不能使用等号进行衡量。需要使用is null，因为数据库中的<strong>null代表什么也没有</strong>，它不是一个值，所以不能使用等号衡量。</p>
+<p><strong>and和or同时出现的话，有优先级问题吗</strong>？</p>
+<p>and优先级比or高！！！语句会先执行and之后执行or。</p>
+<p><em>解决方案：加括号！</em></p>
+<p><strong>in的用法：</strong></p>
+<p>in（’a’，’b’）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select JOB,ename from emp where job in (&#x27;CLERK&#x27;,&#x27;ANALYST&#x27;);<br>+---------+--------+<br>| JOB     | ename  |<br>+---------+--------+<br>| CLERK   | SMITH  |<br>| ANALYST | SCOTT  |<br>| CLERK   | ADAMS  |<br>| CLERK   | JAMES  |<br>| ANALYST | FORD   |<br>| CLERK   | MILLER |<br>+---------+--------+<br>6 rows in set (0.001 sec)<br>//查询工作是分析师和文员的工作人员，用in语句。<br></code></pre></td></tr></table></figure>
+
+<p><em><strong>注意：in不是一个区间，in后面跟的是一个具体的值。</strong></em></p>
+<p><strong>关于like</strong></p>
+<p>​	称为模糊查询，支持%或下划线匹配。</p>
+<p>​	%匹配任意个字符</p>
+<p>​	下划线，一个下划线只匹配一个字符</p>
+<p>（%是一个特殊符号，_也是一个特殊符号）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs mysql">MariaDB [hello]&gt; select ename from emp where ename like &#x27;%o%&#x27;;<br>+-------+<br>| ename |<br>+-------+<br>| JONES |<br>| SCOTT |<br>| FORD  |<br>+-------+<br>3 rows in set (0.000 sec)<br>//查询名字里面有o的人名。<br>MariaDB [hello]&gt; select ename from emp where ename like &#x27;%T&#x27;;<br>+-------+<br>| ename |<br>+-------+<br>| SCOTT |<br>+-------+<br>1 row in set (0.001 sec)<br>//查询名字后面以t结尾的人名。<br>MariaDB [hello]&gt;  select ename from emp where ename like &#x27;k%&#x27;;<br>+-------+<br>| ename |<br>+-------+<br>| KING  |<br>+-------+<br>1 row in set (0.000 sec)<br>//查询名字以k开头的人名。<br>MariaDB [hello]&gt;  select ename from emp where ename like &#x27;_A%&#x27;;<br>+--------+<br>| ename  |<br>+--------+<br>| WARD   |<br>| MARTIN |<br>| JAMES  |<br>+--------+<br>3 rows in set (0.001 sec)<br>//查询名字中第二个字母是A的人名。<br></code></pre></td></tr></table></figure>
+
+<p><em>注意：找出名字中有下划线的</em></p>
+<p><strong>select name from t_student where like ‘%\_%’;</strong></p>
+<p><strong>使用转义字符让下划线保留。</strong></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Mysql/" class="category-chain-item">Mysql</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>mysql day04</div>
+      <div>https://gaster44.github.io/2023/10/24/mysql-day04/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>huangjinhong</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/26/%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/" title="异常捕获">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">异常捕获</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/22/mysql-day03/" title="mysql day03">
+                        <span class="hidden-mobile">mysql day03</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

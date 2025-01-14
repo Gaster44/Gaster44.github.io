@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="huangjinhong">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="构造函数和析构函数一.构造函数基本概念： 在实例化对象时，会调用的用于初始化的函数。 如果不写，默认存在一个无参构造函数。 构造函数的写法： 1.没有返回值 2.函数名和类名必须相同 3.没有特殊需求时，一般都是public 4.构造函数可以重载 5.this代表当前调用该函数的对象自己。 注意： 如果不自己实现无参构造函数而实现了有参构造函数，会失去默认的无参构造。(默认的无参构造函数会丢失)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象之封装四">
+<meta property="og:url" content="https://gaster44.github.io/2023/12/03/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E5%9B%9B/index.html">
+<meta property="og:site_name" content="Gaster44&#39;s blog">
+<meta property="og:description" content="构造函数和析构函数一.构造函数基本概念： 在实例化对象时，会调用的用于初始化的函数。 如果不写，默认存在一个无参构造函数。 构造函数的写法： 1.没有返回值 2.函数名和类名必须相同 3.没有特殊需求时，一般都是public 4.构造函数可以重载 5.this代表当前调用该函数的对象自己。 注意： 如果不自己实现无参构造函数而实现了有参构造函数，会失去默认的无参构造。(默认的无参构造函数会丢失)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-03T13:23:51.000Z">
+<meta property="article:modified_time" content="2023-12-04T16:10:26.215Z">
+<meta property="article:author" content="huangjinhong">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>面向对象之封装四 - Gaster44&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gaster44.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="面向对象之封装四"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-12-03 21:23" pubdate>
+          2023年12月3日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">面向对象之封装四</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h1><h2 id="一-构造函数"><a href="#一-构造函数" class="headerlink" title="一.构造函数"></a>一.构造函数</h2><p><strong>基本概念：</strong></p>
+<p>在实例化对象时，会调用的用于初始化的函数。</p>
+<p><strong>如果不写，默认存在一个无参构造函数。</strong></p>
+<p><strong>构造函数的写法：</strong></p>
+<p>1.没有返回值</p>
+<p>2.函数名和类名必须相同</p>
+<p>3.没有特殊需求时，一般都是public</p>
+<p>4.构造函数可以重载</p>
+<p>5.this代表当前调用该函数的对象自己。</p>
+<p><strong>注意：</strong></p>
+<p><em><strong>如果不自己实现无参构造函数而实现了有参构造函数，会失去默认的无参构造。</strong></em>(默认的无参构造函数会丢失)</p>
+<p>（感觉和结构体好像哦）</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> age;<br>        <span class="hljs-comment">//类中是允许自己申明无参构造函数的</span><br>        <span class="hljs-comment">//但是结构体是不允许的</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>()</span>&#123;<br>        name=<span class="hljs-string">&quot;大帅哥&quot;</span>;<br>        age=<span class="hljs-number">18</span>;<br>        <span class="hljs-comment">//开始构造函数嘞。</span><br>	&#125;<br>        <span class="hljs-comment">//允许有重载，可以再写一个。</span><br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age,<span class="hljs-built_in">string</span> name</span>)</span>&#123;<br>         <span class="hljs-comment">//this 代表当前该调用函数的对象自己。</span><br>         <span class="hljs-keyword">this</span>.age=age;<br>         <span class="hljs-comment">//this代表类里面的age，另一个代表外面传进来的age（即形式参数）</span><br>         <span class="hljs-keyword">this</span>.name=name;<br>     &#125;<br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Person p=<span class="hljs-keyword">new</span> Person();<br>            <span class="hljs-comment">//这个时候其实调用的就是一个无参的构造函数了。</span><br>            <span class="hljs-comment">//在调用那个new Person时，其实就会执行上面那个无参构造函数。在执行时就会把我们的成员变量进行初始化了。</span><br>            <span class="hljs-comment">//和结构体高度相似了。</span><br>            Console.WriteLine(p.age);<br>            <span class="hljs-comment">//这个时候age就是我们在构造函数时赋的值，age会打印出18.</span><br>            Person p2=<span class="hljs-keyword">new</span> Person(<span class="hljs-number">18</span>,<span class="hljs-string">&quot;大帅哥&quot;</span>);<br>            <span class="hljs-comment">//默认调用另一个重载函数。</span><br>            <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="二-构造函数的特殊写法"><a href="#二-构造函数的特殊写法" class="headerlink" title="二.构造函数的特殊写法"></a>二.构造函数的特殊写法</h2><p>可以通过this重用构造函数代码</p>
+<p>访问修饰符   构造函数名（参数列表）：this（参数1，参数2…….）</p>
+<h3 id="有参重构无参函数"><a href="#有参重构无参函数" class="headerlink" title="有参重构无参函数"></a>有参重构无参函数</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> age;<br>        <span class="hljs-comment">//类中是允许自己申明无参构造函数的</span><br>        <span class="hljs-comment">//但是结构体是不允许的</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>()</span>&#123;<br>        name=<span class="hljs-string">&quot;大帅哥&quot;</span>;<br>        age=<span class="hljs-number">18</span>;<br>        <span class="hljs-comment">//开始构造函数嘞。</span><br>	&#125;<br>        <span class="hljs-comment">//允许有重载，可以再写一个。</span><br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age,<span class="hljs-built_in">string</span> name</span>):<span class="hljs-title">this</span>()</span>&#123;<br>         <span class="hljs-comment">//注意，在这个构造函数中，参数列表就没有意义了。会首先调用this（）（this（）就代表那个无参的构造函数）所指的函数，之后再调用当前的这个函数的逻辑。</span><br>         Console.WriteLine(<span class="hljs-string">&quot;两个&quot;</span>);<br>     &#125;<br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Person p=<span class="hljs-keyword">new</span> Person(<span class="hljs-number">18</span>,<span class="hljs-string">&quot;哈哈&quot;</span>);<br>            Console.WriteLine(p.age);<br>        &#125;<br>        <span class="hljs-comment">//最后会先输出“两个”，再输出18.因为先执行了this函数指向的无参函数，让age等于18，之后再执行有参函数，输出“两个”这一字符串，之后再进到主函数中打印出18.</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="有参重构有参函数"><a href="#有参重构有参函数" class="headerlink" title="有参重构有参函数"></a>有参重构有参函数</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> age;<br>        <span class="hljs-comment">//类中是允许自己申明无参构造函数的</span><br>        <span class="hljs-comment">//但是结构体是不允许的</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>()</span>&#123;<br>        name=<span class="hljs-string">&quot;大帅哥&quot;</span>;<br>        age=<span class="hljs-number">18</span>;<br>        <span class="hljs-comment">//开始构造函数嘞。</span><br>	&#125;<br>        <span class="hljs-comment">//允许有重载，可以再写一个。</span><br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age,<span class="hljs-built_in">string</span> name</span>):<span class="hljs-title">this</span>(<span class="hljs-params">name</span>)</span>&#123;<br>         Console.WriteLine(<span class="hljs-string">&quot;两个&quot;</span>);<br>     &#125;<br>        <span class="hljs-comment">//传参传谁的？传你的那个构造函数，（就是this前面的函数），意思为：当执行到this前面那个函数时，它会把那个有两个参数的函数里面的name参数先传进去this所指的构造函数中，再进到this函数中进行逻辑执行。</span><br>        <span class="hljs-comment">//总结：你传的参数类型是什么，它this调用的构造函数就是什么。</span><br>        <span class="hljs-comment">//再构造一个有一个参数的有参函数</span><br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">string</span> name</span>)</span>&#123;<br>         <span class="hljs-keyword">this</span>.name=name;<br>&#125;<br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Person p=<span class="hljs-keyword">new</span> Person(<span class="hljs-number">18</span>,<span class="hljs-string">&quot;哈哈&quot;</span>);<br>            Console.WriteLine(p.age);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="无参重构有参函数"><a href="#无参重构有参函数" class="headerlink" title="无参重构有参函数"></a>无参重构有参函数</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> age;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>()<span class="hljs-title">this</span>(<span class="hljs-params"><span class="hljs-number">18</span></span>)</span>&#123;<br>        name=<span class="hljs-string">&quot;大帅哥&quot;</span>;<br>        age=<span class="hljs-number">18</span>;<br>	&#125;<br>     <span class="hljs-comment">//在这种情况下，this前面的函数括号里面没有参数形式了，也没有东西可以传进this所指的构造函数了，但是还是可以调用this函数的。可以在this里面写常量，会自动判别常量的类型，从而调用相应的this函数。</span><br>     <span class="hljs-comment">//可以看出，只要this（）内的结果是参数类型，不一定要this前面函数的参数名，你也可以自己写一个变量。</span><br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age,<span class="hljs-built_in">string</span> name</span>):</span>&#123;<br>         Console.WriteLine(<span class="hljs-string">&quot;两个&quot;</span>);<br>     &#125;<br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age</span>)</span>&#123;<br>         <span class="hljs-keyword">this</span>.age=age;<br>&#125;<br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Person p=<span class="hljs-keyword">new</span> Person(<span class="hljs-number">18</span>,<span class="hljs-string">&quot;哈哈&quot;</span>);<br>            Console.WriteLine(p.age);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="三-析构函数（了解即可）"><a href="#三-析构函数（了解即可）" class="headerlink" title="三.析构函数（了解即可）"></a>三.析构函数（了解即可）</h2><p><strong>基本概念</strong></p>
+<p>当引用类型的堆内存被回收时，会调用该函数</p>
+<p>对于需要手动管理内存的语言（比如C++)，需要在析构函数中做一些内存回收处理。</p>
+<p>但是C#中存在自动垃圾回收机制GC</p>
+<p>所以我们几乎不会怎么使用析构函数，除非你想在某一个对象被垃圾回收时，做一些特殊处理。</p>
+<p><strong>注意：</strong>在Unity开发中，析构函数几乎不会使用，所以该知识点只做了解即可。</p>
+<p><strong>基本语法</strong>：</p>
+<p>~类名（）</p>
+<p>{</p>
+<p>}</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> age;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>()<span class="hljs-title">this</span>(<span class="hljs-params"><span class="hljs-number">18</span></span>)</span>&#123;<br>        name=<span class="hljs-string">&quot;大帅哥&quot;</span>;<br>        age=<span class="hljs-number">18</span>;<br>	&#125;<br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age,<span class="hljs-built_in">string</span> name</span>):</span>&#123;<br>         Console.WriteLine(<span class="hljs-string">&quot;两个&quot;</span>);<br>     &#125;<br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age</span>)</span>&#123;<br>         <span class="hljs-keyword">this</span>.age=age;<br>&#125;<br>        <span class="hljs-comment">//当引用类型的堆内存被回收时，会调用该函数</span><br>        <span class="hljs-comment">//但是，在C#中这一般不用我们去处理，C#有自动回收的机制，所以我们一般不用写这个函数，写一下只是为了方便看清楚罢了。</span><br>        <span class="hljs-comment">//析构函数是当你的的内存垃圾真正被回收时，才会调用的函数。</span><br>        ~Person()&#123;<br>            <br>        &#125;<br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Person p=<span class="hljs-keyword">new</span> Person(<span class="hljs-number">18</span>,<span class="hljs-string">&quot;哈哈&quot;</span>);<br>            Console.WriteLine(p.age);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="四-垃圾回收机制"><a href="#四-垃圾回收机制" class="headerlink" title="四.垃圾回收机制"></a>四.垃圾回收机制</h2><p>垃圾回收，英文简写GC（Garbage Collector)</p>
+<p>垃圾回收的过程是在<strong>遍历堆（Heap）上动态分配的所有对象</strong></p>
+<p>通过<strong>识别</strong>它们是否被引用来确定哪些对象是垃圾，哪些对象仍要被使用。</p>
+<p>所谓垃圾就是<strong>没有被任何变量，对象引用的内容</strong></p>
+<p>垃圾就需要被回收释放</p>
+<p>垃圾回收有很多种算法，比如：</p>
+<p><strong>引用计数（Reference Counting）</strong></p>
+<p><strong>标记清理（Mark Sweep）</strong></p>
+<p><strong>标记整理（Mark Compact）</strong></p>
+<p><strong>复制集合（Copy Collection）</strong></p>
+<p>注意：</p>
+<p><strong>GC只负责堆（Heap）内存的垃圾回收</strong></p>
+<p><strong>引用类型都是存在堆（Heap）中的，所以它的分配和释放都通过垃圾回收机制来管理</strong></p>
+<p>栈（Stack）上的内存是由系统自动管理的</p>
+<p>值类型在栈（Stack）中分配内存的，他们有自己的生命周期，不用对他们进行管理，会自动分配和释放。</p>
+<p><strong>C#中内存回收机制的大概原理</strong></p>
+<p>0代内存         1代内存        2代内存</p>
+<p>代的概念：</p>
+<p><strong>代是垃圾回收机制使用的一种算法（分代算法）</strong></p>
+<p>新分配的对象都会被配置在第0代内存中</p>
+<p>每次分配都可能会进行垃圾回收以释放内存（0代内存满时）</p>
+<p>在一次内存回收过程开始时，垃圾回收器会认为堆中全是垃圾，会进行以下两步：</p>
+<p><strong>1.标记对象从根（静态字段、方法参数）开始检查引用对象，标记后为可达对象，未标记为不可达对象，不可达对象就认为是垃圾。</strong></p>
+<p><strong>2.搬迁对象压缩堆   （挂起执行托管代码线程） 释放未标记的对象，搬迁可达对象，修改引用地址。</strong></p>
+<p>大对象总被认为是第二代内存，目的是减少性能损耗，提高性能</p>
+<p>不会对大对象进行搬迁压缩     <em><strong>（85000字节（83kb）以上的对象为大对象）</strong></em></p>
+<p><strong>我们也可以手动进行GC</strong></p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs c#"><span class="hljs-keyword">namespace</span> 语法知识<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">string</span> name;<br>    <span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> age;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>()<span class="hljs-title">this</span>(<span class="hljs-params"><span class="hljs-number">18</span></span>)</span>&#123;<br>        name=<span class="hljs-string">&quot;大帅哥&quot;</span>;<br>        age=<span class="hljs-number">18</span>;<br>	&#125;<br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age,<span class="hljs-built_in">string</span> name</span>):</span>&#123;<br>         Console.WriteLine(<span class="hljs-string">&quot;两个&quot;</span>);<br>     &#125;<br>     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Person</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> age</span>)</span>&#123;<br>         <span class="hljs-keyword">this</span>.age=age;<br>&#125;<br>    <span class="hljs-keyword">internal</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span>&#123;<br>            Person p=<span class="hljs-keyword">new</span> Person(<span class="hljs-number">18</span>,<span class="hljs-string">&quot;哈哈&quot;</span>);<br>            Console.WriteLine(p.age);<br>            GC.Collect();<br>            <span class="hljs-comment">//手动触发垃圾回收的方法</span><br>            <span class="hljs-comment">//一般情况下我们不会频繁调用，都是在Loading过场景时才调用。</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Csharp/" class="category-chain-item">Csharp</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>面向对象之封装四</div>
+      <div>https://gaster44.github.io/2023/12/03/面向对象之封装四/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>huangjinhong</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年12月3日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/19/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E4%BA%94/" title="面向对象之封装五">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">面向对象之封装五</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/11/30/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B9%8B%E5%B0%81%E8%A3%85%E4%B8%89/" title="面向对象之封装三">
+                        <span class="hidden-mobile">面向对象之封装三</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
